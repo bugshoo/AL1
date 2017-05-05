@@ -1,0 +1,13 @@
+{
+    "folder":   "json_files",
+    "type":     "json",
+    "format":   {
+                    "team": "Team4",
+                    "name": "TeamFour",
+                    "users": {
+                                "juannarvez, miguelalopez, alvaromartinez986"
+                            }
+                },
+    "version":  "1.0.0",
+    "tag":      "dev-1.0.0"
+}
