@@ -1,0 +1,13 @@
+{
+    "folder":   "json_files",
+    "type":     "json",
+    "format":   {
+                    "user": "BryanTabarez",
+                    "first_name": "Bryan",
+                    "last_name": "Tabarez",
+                    "code": "",
+                    "age": "24"
+                },
+    "version":  "1.0.0",
+    "tag":      "dev-1.0.0"
+}
