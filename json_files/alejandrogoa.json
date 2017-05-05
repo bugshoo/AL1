@@ -1,0 +1,13 @@
+{
+    "folder":   "json_files",
+    "type":     "json",
+    "format":   {
+                    "user": "alejandrogoa",
+                    "first_name": "Alejandro",
+                    "last_name": "Gómez Anaya",
+                    "code": "0941221",
+                    "age": "23"
+                },
+    "version":  "1.0.0",
+    "tag":      "dev-1.0.0"
+}
