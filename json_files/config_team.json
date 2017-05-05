@@ -4,10 +4,10 @@
     "format":   {
                     "team": "",
                     "name": "",
-                    "users": {
+                    "users": (
                                 ""
-                            }
+                            )
                 },
-    "version":  "1.0.0",
-    "tag":      "dev-1.0.0"
+    "version":  "1.0.1",
+    "tag":      "dev-1.0.1"
 }
