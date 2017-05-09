@@ -1,0 +1,13 @@
+{
+    "folder":   "json_files",
+    "type":     "json",
+    "format":   {
+                    "user": "juliansc95",
+                    "first_name": "Julian Andres",
+                    "last_name": "Silva Campos",
+                    "code": "",
+                    "age": "21"
+                },
+    "version":  "1.0.0",
+    "tag":      "dev-1.0.0"
+}

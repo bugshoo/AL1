@@ -1,0 +1,13 @@
+{
+    "folder":   "json_files",
+    "type":     "json",
+    "format":   {
+                    "user": "juandprado",
+                    "first_name": "Juan Diego",
+                    "last_name": "Prado Ramos",
+                    "code": "",
+                    "age": "19"
+                },
+    "version":  "1.0.0",
+    "tag":      "dev-1.0.0"
+}
