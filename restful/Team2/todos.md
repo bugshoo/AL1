@@ -1,29 +1,3 @@
-**Title**
-----
-  <_Additional information about your API call. Try to use verbs that match both request type (fetching vs modifying) and plurality (one vs multiple)._>
-
-* **URL**
-
-  <_The URL Structure (path only, no root url)_>
-
-* **Method:**
-  
-  <_The request type_>
-
-  `GET` | `POST` | `DELETE` | `PUT`
-  
-*  **URL Params**
-
-   <_If URL params exist, specify them in accordance with name mentioned in URL section. Separate into optional and required. Document data constraints._> 
-
-   **Required:**
- 
-   `id=[integer]`
-
-   **Optional:**
- 
-   `photo_id=[alphanumeric]`
-
 **Create ToDo task**
 ----
   _Creates a single ToDo task ._
@@ -68,3 +42,89 @@
 
   * **Code:** 422 UNPROCESSABLE ENTITY <br />
     **Content:** `{ error : "Mandatory fields are missing" }`
+    
+**Get a ToDo task**
+----
+  _Get information about a single task._
+
+* **URL**
+
+  <_/todos/:id_>
+
+* **Method:**
+  
+  `GET`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+  _None._
+
+* **Success Response:**
+  
+  _Returns a JSON object with the task requested_
+
+  * **Code:** 200 - OK <br />
+    **Content:**
+ `{
+    "userId": 1,
+    "id": 4, 
+    "title": "et porro tempora",
+    "completed": true
+    }`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "No task exists with the supplied ID." }`
+    
+**Get ToDo tasks**
+----
+  _Get information about several tasks._
+
+* **URL**
+
+  _/todos_
+
+* **Method:**
+  
+  `GET`
+  
+*  **URL Params**
+
+   _None._
+
+* **Data Params**
+
+  _None._
+
+* **Success Response:**
+  
+  _Returns a JSON object with the tasks requested_
+
+  * **Code:** 200 - OK <br />
+    **Content:**
+ `[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "quis ut nam facilis et officia qui",
+    "completed": false
+  }
+  ]`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "No task found in the database." }`
