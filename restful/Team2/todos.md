@@ -124,18 +124,18 @@
 * **Sorting Params**
 
   **title:** (asc | desc) <br />
-  `?sort=title` OR `?sort=-title`
+  `?sort=title` for asc <br /> OR <br /> `?sort=-title` for desc
   
 * **Query Params**
 
   **userId:** (equal) <br />
-  `?{userId}__{equal}={value}`
+  `?userId__equal={value}`
   
   **title:** (equal | like) <br />
-  `?{title}__{operator}={value}`
+  `?title__{operator}={value}`
   
   **completed:** (equal) <br />
-  `?{completed}__{equal}={value}`
+  `?completed__equal={value}`
 
 * **Success Response:**
   
@@ -230,7 +230,7 @@
 
 * **Method:**
   
-  `GET`
+  `DELETE`
   
 * **URL Params**
 
