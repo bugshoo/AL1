@@ -10,7 +10,7 @@
 
   `POST`
   
-*  **URL Params**
+* **URL Params**
 
   _None._
 
@@ -31,6 +31,8 @@
   }`
 
 * **Success Response:**
+
+  _Returns a JSON object with the task created_
 
   * **Code:** 201 - OK <br />
     **Content:**
@@ -110,6 +112,30 @@
 * **Data Params**
 
   _None._
+  
+* **Paging Params**
+
+  **offset:** 0 by default <br />
+  `?offset=[integer]`
+  
+  **limit:** 5 by default <br />
+  `?limit=[integer]`
+  
+* **Sorting Params**
+
+  **title:** (asc | desc) <br />
+  `?sort=title` OR `?sort=-title`
+  
+* **Query Params**
+
+  **userId:** (equal) <br />
+  `?{userId}__{equal}={value}`
+  
+  **title:** (equal | like) <br />
+  `?{title}__{operator}={value}`
+  
+  **completed:** (equal) <br />
+  `?{completed}__{equal}={value}`
 
 * **Success Response:**
   
@@ -173,6 +199,8 @@
 
 * **Success Response:**
 
+  _Returns a JSON object with the task updated_
+
   * **Code:** 200 - OK <br />
     **Content:**
  `{
@@ -215,8 +243,6 @@
   _None._
 
 * **Success Response:**
-  
-  _Returns a JSON object with the task requested_
 
   * **Code:** 204 - OK <br />
     **Content:**
