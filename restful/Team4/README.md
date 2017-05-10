@@ -59,6 +59,7 @@ Returns json data about a set of albums
 
 
 // USERS API CRUD
+
 CREATE USER
 
 Create a single user
@@ -77,30 +78,33 @@ Create a single user
 			None
 
 	Data Params
-		Requiered:
-		id=[integer]
-		name=[string]
-		username=[string]
-		email=[string]
-		address=[
-			street=[string]
-			suite=[string]
-			city=[string]
-			zipcode=[string]
-			geo=[
-				lat=[double]
-				lng=[double]
-			]
-		]
-		phone=[string]
-		website=[string]
-		company=[
-			name=[string]
-			catchPhrase=[string]
-			bs=[string]
-		]
+		Required:
+
+		id=[integer, unique]
+		username=[string, unique, maximum = 55]
+		email=[string, format_validation = example@example.com, maximum = 255]
 		
 		Optional:
+
+		name=[string, maximum = 255]
+		address=[
+					street=[string, maximum = 255]
+					suite=[string, maximum = 55]
+					city=[string, maximum = 55]
+					zipcode=[string, maximum = 32]
+					geo=[
+						lat=[double, signed]
+						lng=[double, signed]
+					]
+				]
+				phone=[string, maximum = 55]
+				website=[string, maximum = 255]
+				company=[
+					name=[string, maximum = 255]
+					catchPhrase=[string, maximum = 255]
+					bs=[string, maximum = 255]
+				]
+
 		None
 
 	Sucess Response:
