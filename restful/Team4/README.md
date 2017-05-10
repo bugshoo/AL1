@@ -5,18 +5,22 @@ Returns json data about a set of albums
 
 	URL	
 		/albums
-
+		
 	Method
 		GET 
 
 	URL Params
 
 		Requiered:
-		none
+		offset=[integer, start in 0]
+		limit=[integer, 10]
 
 		Optional:
-		offset=[integer]
-		limit=[integer]
+		name_order = [asc | des]
+		userID_filter = [=]
+		title_filter = [ = | %pattern%]
+
+		
 
 	Data Params
 		none
@@ -24,21 +28,24 @@ Returns json data about a set of albums
 	Sucess Response:
 		Code:200
 		Content: [
-			 {
-			    "userId": 1,
-			    "id": 1,
-			    "title": "quidem molestiae enim"
-		  	},	
-		  	
-		  	.
-		  	.
-		  	.
-		  	
-		  	{
-			    "userId": n,
-			    "id": n,
-			    "title": "title n"
-		  	}	
+		  	totalCounts:100,
+		  	list_albums:{
+				 {
+				    "userId": 1,
+				    "id": 1,
+				    "title": "quidem molestiae enim"
+			  	},	
+			  	
+			  	.
+			  	.
+			  	.
+			  	
+			  	{
+				    "userId": n,
+				    "id": n,
+				    "title": "title n"
+			  	}	
+		 	 }
 		]
 
 	Error Response:
