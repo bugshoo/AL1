@@ -1,0 +1,15 @@
+{
+    "folder":   "json_files",
+    "type":     "json",
+    "format":   {
+                    "team": "2",
+                    "name": "ZidaneMetaAJames",
+                    "users": {
+                                "juandprado",
+				"nelson-portilla",
+				"juliansc95"
+                            }
+                },
+    "version":  "1.0.0",
+    "tag":      "dev-1.0.0"
+}
