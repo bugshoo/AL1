@@ -165,7 +165,7 @@ None
    * **Code:** 422 UNPROCESSABLE ENTRY <br />
     **Content:** `{ error : "mandatory fields are missing" }`
     
-   **Delete Album**
+**Delete Album**
 ----
   Returns json data about a deleted photo.
 
