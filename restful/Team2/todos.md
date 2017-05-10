@@ -1,6 +1,6 @@
 **Create ToDo task**
 ----
-  _Creates a single ToDo task ._
+  _Creates a single ToDo task._
 
 * **URL**
 
@@ -12,13 +12,21 @@
   
 *  **URL Params**
 
-   _None_ 
+  _None._
 
 * **Data Params**
 
+   **Required:**
+ 
+   `userId=[integer]` <br />
+   `title=[string 255]` <br />
+   `completed=[boolean]`
+   
+   **Example:**
+
   `{
      "userId": [integer],
-     "title": [string],
+     "title": [string 255],
      "completed": [boolean]
   }`
 
@@ -49,13 +57,13 @@
 
 * **URL**
 
-  <_/todos/:id_>
+  _/todos/:id_
 
 * **Method:**
   
   `GET`
   
-*  **URL Params**
+* **URL Params**
 
    **Required:**
  
@@ -95,9 +103,9 @@
   
   `GET`
   
-*  **URL Params**
+* **URL Params**
 
-   _None._
+  _None._
 
 * **Data Params**
 
@@ -128,3 +136,93 @@
 
   * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "No task found in the database." }`
+    
+**Update ToDo task**
+----
+  _Updates the information of a ToDo task._
+
+* **URL**
+
+  _/todos/:id_
+
+* **Method:**
+
+  `PUT`
+  
+* **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Data Params**
+
+   **Optional:**
+ 
+   `userId=[integer]` <br />
+   `title=[string 255]` <br />
+   `completed=[boolean]` <br />
+   
+   **Example:**
+
+  `{
+     "userId": [integer],
+     "title": [string],
+     "completed": [boolean]
+   }`
+
+* **Success Response:**
+
+  * **Code:** 200 - OK <br />
+    **Content:**
+ `{
+    "userId": 1,
+    "id": 4, 
+    "title": "et porro tempora",
+    "completed": true
+    }`
+ 
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "The JSON is not valid" }`
+    
+  OR
+    
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "No task exists with the supplied ID." }`
+    
+**Delete a ToDo task**
+----
+  _Deletes a ToDo task._
+
+* **URL**
+
+  _/todos/:id_
+
+* **Method:**
+  
+  `GET`
+  
+* **URL Params**
+
+  **Required:**
+ 
+  `id=[integer]`
+
+* **Data Params**
+
+  _None._
+
+* **Success Response:**
+  
+  _Returns a JSON object with the task requested_
+
+  * **Code:** 204 - OK <br />
+    **Content:**
+    _empty_
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "No task exists with the supplied ID." }`
