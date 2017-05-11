@@ -23,7 +23,8 @@ Create a single user
 		_/rest/v1/users_
 
 * **Method** 
-		´POST´
+
+´POST´
 
 * **URL Params** 
 
@@ -129,6 +130,7 @@ List all users by filters and an order
 		rest/v1/users
 
 * **Method** 
+
 		´GET´
 
 * **URL Params** 
@@ -252,7 +254,8 @@ Update a single user
 		rest/v1/users/:userId
 
 * **Method** 
-		PUT
+
+		´PUT´
 
 * **URL Params** 
 
@@ -354,12 +357,15 @@ Update a single user
 Delete a single user
 
 * **URL	** 
+
 		rest/v1/users/:userId
 
 * **Method** 
-		DELETE
+
+		´DELETE´
 
 * **URL Params** 
+
 		Required
 			id=´[integer, not editable]´
 		Optional:
