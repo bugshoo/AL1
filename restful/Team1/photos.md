@@ -1,28 +1,22 @@
 # API photo's especifications
 
+## Data params' description
+
+  | Field name   |      Type      |  Description |
+  |--------------|----------------|--------------|
+  |albumId       |[integer]       |              |
+  |id            |[integer]       |assigned/non editable |
+  |title         |[string]        |maximum length 255 |
+  |url           |[string]        |maximum length 255 |
+  |thumbnailUrl  |[string]        |maximum length 255 |
+  |file          |[file]          |              |
+
 ## Contents
   - [list photos](#list-photos) 
   - [get photo](#get-photo) 
   - [create photo](#create-photo) 
   - [update photo](#update-photo) 
   - [delete photo](#delete-photo) 
-
-| method | url | description |
-GET  	/photos
-GET 	/photos/:id
-POST 	/photos
-PUT		/photos
-DELETE	/photos
-
-
-## Data params' description
-
-  | Field name   |      Type      |  Description |
-  |--------------|:--------------:|-------------:|
-  |albumId       |[integer]       |              |
-  |title         |[alphanumeric]  |              |
-  |file          |[file]          |              |
-
 
 ## List Photos
 
