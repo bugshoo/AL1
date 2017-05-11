@@ -1,5 +1,13 @@
 # API photo's especifications
 
+## Detail especifications
+  | Method       |Endpoint          |  Description |
+  |:------------:|------------------|:------------:|
+  |`GET`         |/photos     |              |
+  |`GET`         |/photos/:id |              |
+  |`POST`        |/photos     |              |
+  |`PUT`         |/photos     |              |
+
 ## Data params' description
 
   | Field name   |      Type      |  Description |
@@ -32,12 +40,39 @@
   
 * **URL Params**
 
-  None 
+  `count`
+  `page`
+  `sort`
+  `filter`
+
+  * **Pagin params**
+
+  default: count=10, page=1
+  
+  `?count=[integer]&page=[integer]`
+
+  - example
+  `photos\count=15&page=3`
+  
+  
+* **ordering data param**
+
+  - ascending
+  `?sort=title`
+  
+  - descending
+  `sort=-title`
+  
+* **Filtering**
+
+  - albumId?(equal)
+  title (equal | like) 
   
 * **Data Params**
 
   None
 
+  
 * **Success Response:**
 
   * **Code:** 201 <br />
