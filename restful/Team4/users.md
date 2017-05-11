@@ -19,12 +19,12 @@
 
 Create a single user
 
-* **URL** 	
-		_/rest/v1/users_
+* **URL**
+	_/rest/v1/users_
 
-* **Method** 
-
-´POST´
+* **Method**
+	
+	`POST`
 
 * **URL Params** 
 
@@ -37,28 +37,28 @@ Create a single user
 		
 		Required:
 
-			name = ´[string, maximum = 255]´
-			username = ´[string, unique, maximum = 55]´
-			email = ´[string, format_validation = example@example.com, maximum = 255]´
+			name = `[string, maximum = 255]`
+			username = `[string, unique, maximum = 55]`
+			email = `[string, format_validation = example@example.com, maximum = 255]`
 
 		Optional:
 
 			address=[
-					street = ´[string, maximum = 255]´
-					suite = ´[string, maximum = 55]´
-					city = ´[string, maximum = 55]´
-					zipcode = ´[string, maximum = 32]´
+					street = `[string, maximum = 255]`
+					suite = `[string, maximum = 55]`
+					city = `[string, maximum = 55]`
+					zipcode = `[string, maximum = 32]`
 					geo=[
-						lat = ´[double, signed]´
-						lng = ´[double, signed]´
+						lat = `[double, signed]`
+						lng = `[double, signed]`
 					]
 				]
-			phone = ´[string, maximum = 55]´
-			website = ´[string, maximum = 255]´
+			phone = `[string, maximum = 55]`
+			website = `[string, maximum = 255]`
 			company = [
-					name = ´[string, maximum = 255]´
-					catchPhrase = ´[string, maximum = 255]´
-					bs = ´[string, maximum = 255]´
+					name = `[string, maximum = 255]`
+					catchPhrase = `[string, maximum = 255]`
+					bs = `[string, maximum = 255]`
 				]
 				
 
@@ -120,6 +120,7 @@ Create a single user
 		});
 
 * **Notes** :
+
         id:[assigned by the service]
 
 **LIST USERS**
@@ -131,41 +132,41 @@ List all users by filters and an order
 
 * **Method** 
 
-		´GET´
+		`GET`
 
 * **URL Params** 
 
         Requiered:
-	        offset = ´[integer]´ 
-	        limit = ´[integer, default=20]´
+	        offset = `[integer]`
+	        limit = `[integer, default=20]`
             example: rest/v1/users?offset=0&limit=8
 
 	    Optional:
-            name_order = ´[asc | des]´ 
+            name_order = `[asc | des]`
             examples :
 	    - by order ascendent  = rest/v1/users?offset=0&limit=8&name_order=asc  
 	    - by order descendent = rest/v1/users?offset=0&limit=8&name_order=des 
-            IDUser_order = ´[asc | des]´
+            IDUser_order = `[asc | des]`
             examples :
 	    - by order ascendent  = rest/v1/users?offset=0&limit=8&IDUser_order=asc  
 	    - by order descendent = rest/v1/users?offset=0&limit=8&IDUser_order=des 
-            name_filter = [%pattern%]
+            name_filter = `[ = | %pattern%]`
             examples : 
             - by name that start with M = rest/v1/users?offset=0&limit=8&name_filter=%M% 
 	    - by name that qual to nano = rest/v1/users?offset=0&limit=8&name_filter=nano 
-	    username_filter = [ = | %pattern%]
+	    username_filter = `[ = | %pattern%]`
             examples : 
             - by username that start with M = rest/v1/users?offset=0&limit=8user&name_filter=%M% 
 	    - by username that equal to nano = rest/v1/users?offset=0&limit=8&username_filter=nano 
-	    email_filter = [ = | %pattern%]
+	    email_filter = `[ = | %pattern%]`
             examples : 
             - by email that start with M = rest/v1/users?offset=0&limit=8&email_filter=%M% 
 	    - by email that qual to nano = rest/v1/users?offset=0&limit=8&email_filter=nano 
-	    website_filter = [ = | %pattern%]
+	    website_filter = `[ = | %pattern%]`
             examples : 
             - by website that start with M = rest/v1/users?offset=0&limit=8&website_filter=%M% 
 	    - by website that equal to nano = rest/v1/users?offset=0&limit=8&website_filter=nano 
-	    company_name_filter = [ = | %pattern%]
+	    company_name_filter = `[ = | %pattern%]`
             examples : 
             - by company_name that start with M = rest/v1/users?offset=0&limit=8&company_name_filter=%M% 
 	    - by company_name  that equal to nano = rest/v1/users?offset=0&limit=8&company_filter=nano 
@@ -251,15 +252,16 @@ List all users by filters and an order
 Update a single user
 
 * **URL** 	
+
 		rest/v1/users/:userId
 
 * **Method** 
 
-		´PUT´
+		`PUT`
 
 * **URL Params** 
 
-		userId=´[integer, not editable]´
+		userId=`[integer, not editable]`
 
 		Optional:
 			None
@@ -350,6 +352,7 @@ Update a single user
 	  	});
 
 * **Notes** :
+
         	id:[assigned by the service]
 	
 **DELETE USERS**
@@ -367,7 +370,7 @@ Delete a single user
 * **URL Params** 
 
 		Required
-			id=´[integer, not editable]´
+			id=`[integer, not editable]`
 		Optional:
 			None
 * **Data Params** 
