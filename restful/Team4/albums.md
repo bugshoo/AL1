@@ -1,15 +1,16 @@
 
 <h1 align="center">API ALBUMS</h1>
+<p align="center">Created by: Team4 Contact: dreamteam@alertLogic.com</p>
 
-<br>
+----
+<br />
 
-
-  |    SERVICE   |    METHOD    |       URL      |  DESCRIPTION |
-  |--------------|--------------|:--------------:|-------------:|
-  |List albums   |GET           |_/albums_       |              |
-  |Create albums |              |                |              |
-  |Delete albums |              |                |              |
-  |Update albmums|              |                |              |
+  |    SERVICE   |    METHOD    |           URL          |  		   DESCRIPTION	                  |
+  |--------------|--------------|:----------------------:|-----------------------------------------------:|
+  |List albums   |GET           |_/rest/v1/albums_       |              			          |
+  |Create albums |POTS          |_/rest/v1/albums_     	 |              				  |
+  |Delete albums |              |                	 |                				  |
+  |Update albmums|              |                	 |                                                |
 
 
 **LIST ALBUMS**
@@ -19,7 +20,7 @@ Returns json data about a set of ten albums by page
 
   * **URL:**	
 
-    _/albums_
+    _/rest/v1/albums_
   
   * **METHOD:**
 
@@ -95,3 +96,44 @@ Returns json data about a set of ten albums by page
 	  	});
    ```
 
+**CREATE ALBUM**
+----
+This service create an album of pictures
+
+* **URL**<br />
+	_/albums_
+ 
+* **METHOD:**
+  
+  `POST` 
+  
+*  **URL PARAMS:**
+
+	* **Required:**
+ 
+	None
+
+* **DATA PARAMS:**
+```javascript
+ 	{
+    		"userId": `[integer]`,
+    		"title": `[string]`,
+  	} 
+  ```
+
+* **SUCESS RESPONSE:**
+  
+   * **Code:** 201 OK <br />
+    **Content:** <br />
+    `{  "userId": 1,    "id": 1,    "title": "quidem molestiae enim"  }`
+ 
+* **ERROR RESPONSE:**
+
+  * **Code:** 400  BAD REQUEST- <br />
+    **Content:** <br />
+    `{error: "The JSON is not valid"}`
+
+
+  * **Code:** 422 UNPROCESSABLE ENTRY <br />
+    **Content:** <br />
+    `{ error : "mandatory fields are missing" }`
