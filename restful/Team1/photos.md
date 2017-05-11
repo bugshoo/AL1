@@ -1,17 +1,34 @@
 # API photo's especifications
 
+## Detail especifications
+  | Method       |Endpoint          |  Description |
+  |:------------:|------------------|:------------:|
+  |`GET`         |/photos     |list photos             |
+  |`GET`         |/photos/:id |get a photo              |
+  |`POST`        |/photos     |create photo              |
+  |`PUT`         |/photos     |update photo              |
+  |`DELETE`         |/photos     |delete photo              |
 
 ## Data params' description
 
   | Field name   |      Type      |  Description |
-  |--------------|:--------------:|-------------:|
+  |--------------|----------------|--------------|
   |albumId       |[integer]       |              |
-  |title         |[alphanumeric]  |              |
+  |id            |[integer]       |assigned/non editable |
+  |title         |[string]        |maximum length 255 |
+  |url           |[string]        |maximum length 255 |
+  |thumbnailUrl  |[string]        |maximum length 255 |
   |file          |[file]          |              |
- 
 
-**List Photos**
-----
+## Contents
+  - [list photos](#list-photos) 
+  - [get photo](#get-photo) 
+  - [create photo](#create-photo) 
+  - [update photo](#update-photo) 
+  - [delete photo](#delete-photo) 
+
+## List Photos
+
   Returns json data about all the photos.
 
 * **URL**
@@ -24,12 +41,47 @@
   
 * **URL Params**
 
-  None 
+  `count`
+  `page`
+  `sort`
+  `filter`
+
+  * **Pagin params**
+
+    default: count=10, page=1
+  
+    `?count=[integer]&page=[integer]`
+
+  - example
+  
+    `photos\count=15&page=3`
+  
+  
+* **ordering data param**
+
+  - ascending
+  
+    `?sort=title`
+  
+  - descending
+  
+    `sort=-title`
+  
+* **Filtering**
+
+  - albumId (equal)
+  
+    `filter=albumId&value=[integer]`
+  
+  - title (equal | like)
+
+    `filter=title&value=[string],{equal,like}`
   
 * **Data Params**
 
   None
 
+  
 * **Success Response:**
 
   * **Code:** 201 <br />
@@ -78,8 +130,8 @@
     });
   ```
   
-**Show Photos**
-----
+## Get photo
+
   Returns json data about a single photo.
 
 * **URL**
@@ -196,8 +248,8 @@
     });
   ```
   
-**Edit photo**
-----
+## Update photo
+
   Returns json data about a photo's update.
 
 * **URL**
@@ -261,8 +313,8 @@
     });
   ```
 
-**Delete photo**
-----
+## Delete photo
+
   Returns json data about a deleted photo.
 
 * **URL**
