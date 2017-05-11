@@ -13,6 +13,7 @@
   |Update albmums|              |                	 |                                                |
 
 
+<br />
 **LIST ALBUMS**
 ----
 
@@ -59,8 +60,8 @@ Returns json data about a set of ten albums by page
   [
 	  totalCounts:100,
 		list_albums:{
-		  {
-			  "userId": 1,
+			{
+				"userId": 1,
 				"id": 1,
 				"title": "quidem molestiae enim"
 			},
@@ -70,7 +71,7 @@ Returns json data about a set of ten albums by page
 			.
 			  	
 			{
-			  "userId": n,
+			  	"userId": n,
 				"id": n,
 				"title": "title n"
 			}	
@@ -111,7 +112,7 @@ This service create an album of pictures
 
 	* **Required:**
  
-	None
+		None
 
 * **DATA PARAMS:**
 ```javascript
@@ -125,7 +126,13 @@ This service create an album of pictures
   
    * **Code:** 201 OK <br />
     **Content:** <br />
-    `{  "userId": 1,    "id": 1,    "title": "quidem molestiae enim"  }`
+    ```
+    	{
+	 	"userId": n,
+		"id": n,
+		"title": "title n"
+	}
+	```
  
 * **ERROR RESPONSE:**
 
@@ -136,4 +143,46 @@ This service create an album of pictures
 
   * **Code:** 422 UNPROCESSABLE ENTRY <br />
     **Content:** <br />
-    `{ error : "mandatory fields are missing" }`
+    `{ error : "Mandatory fields are missing" }`
+
+
+**EDIT ALBUM**
+----
+  Returns json data about a album update.
+
+* **URL**
+
+  /albums/:id
+
+* **Method:**
+
+  `PUT`
+  
+*  **URL Params**
+  
+  **Required:**
+ 
+   `id=[integer]`  
+  
+
+* **Data Params**
+ {
+    "userId": `[integer]`,
+     "title": ´[string]`,
+  } 
+     
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:** `{  "userId": 1,    "id": 1,    "title": "quidem molestiae enim-2"  }`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "This album doesn't exist" }`
+    
+    OR
+    
+   * **Code:** 422 UNPROCESSABLE ENTRY <br />
+    **Content:** `{ error : "mandatory fields are missing" }`
+    
