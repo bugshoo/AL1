@@ -1,86 +1,42 @@
 API REST - Resource Management Specification
+Vresion: 1.0
+
 
 URL
 
     /rest/v1/										Endpoint version 1.0
 
-Users
 
-API CALLS
+AVALIABLE RESOURCES
 
-    POST    /rest/v1/users/add/name=:name&username=:username&email=:email			Create a user
-    GET     /rest/v1/users?id=:id								Show a user 
-    PUT     /rest/v1/users?id=:id&name=:name&...						Update a user
-    DELETE  /rest/v1/users?id=:id								Delete a user
+Users	Users.md 
+
+	Create a user
+        Show a user 
+        Update a user
+        Delete a user
     
     
-DOCUMENTATION
+Posts   Posts.md
 
-TITLE
-Create a user
-
-URL
-/rest/v1/users
-
-METHOD
-GET
-
-URL PARAMS
-
-REQUIRED
-	
-	name: 		[string 255],
-	username: 	[string 55],
-	email: 		[string 255]
-
-OPTIONAL
-
-	phone:		[string 55],  	 
-	website:	[string 255]
+	Create a post
+        Show a post
+        Update a post
+        Delete a post
 
 
-DATA PARAMS
+Commens Comments.md
 
-{u: {
-	id: 	  [integer],
-	name:     [string],
-	username: [string],
-	email:    [string],
-	address:
-	{	street: [string],
-        	suite: [string],
-        	city: [string],
-        	zipcode: [string]
-	}
-        	geo:
-		{
-            		lat: [double signed].,
-            		lng: [double signed]
-		{
-	phone:   [string],
-	website: [string],
-        company:
-	{
-	        name: 		[string],
-	        catchPhrase:	[string],	
-	        bs: 		[string]
-	}
-}
+	Create a comment
+        Show a comment
+        Update a comment
+        Delete a comment
 
-SUCCESS RESPONSE
+Album   Album.md
 
-Example:
-	Code: 200
-	Content: { OK }
+	Create a album
+        Show a album
+        Update a album
+        Delete a abum
 
-ERROR RESPONSE
- 	Code: 400
-	Content: { error : "Bad request" }
-	
-SIMPLE CALL
-
-$ curl 'http://IP-SERVER:PORT/rest/v1/users/add/name=gabriel&username=gabo&email=gbortega@gmail.com'
-
-NOTES
-
-<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself 
+ 
