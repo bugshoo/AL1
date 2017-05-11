@@ -16,12 +16,12 @@ _/albums_
 None
 
 * **Data Params**
-
+```javascript
  {
     "userId": `[integer]`,
-     "title": ´[string]`,
-  } 
-
+    "title": `[string]`,
+  } `
+```
 * **Success Response:**
   
    * **Code:** 201 OK <br />
@@ -35,7 +35,7 @@ None
   OR
 
   * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** `{ error : "mandatory fields are missing" }`
+    **Content:** `{ error : "mandatory fields are missing,fields:[field1,field2]" }`
 
 **List Albums**
 ----
@@ -58,11 +58,32 @@ None
 * **Data Params**
 
   None
+* **Paging Params**
 
-* **Success Response:**
+  **offset:** 0 by default <br />
+  `?offset=[integer]`
+  
+  **limit:** 10 by default <br />
+  `?limit=[integer]`
+  
+* **Sorting Params**
+
+  **title:** (asc | desc) <br />
+  `?sort=title` for asc <br /> OR <br /> `?sort=-title` for desc
+  
+* **Query Params**
+
+  **userId:** (equal) <br />
+  `?userId__equal={value}`
+  
+  **title:** (equal | like) <br />
+  `?title__{operator}={value}`
+  
+  
+  * **Success Response:**
 
   * **Code:** 200 OK <br />
-    **Content:** `[
+    **Content:** ```javascript[
   {
     "userId": 1,
     "id": 1,
@@ -82,7 +103,7 @@ None
     "userId": 1,
     "id": 4,
     "title": "non esse culpa molestiae omnis sed optio"
-  }]`
+  }]```
  
 * **Error Response:**
 
@@ -122,8 +143,8 @@ None
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "This album doesn't exist" }`
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{ error : "Query is not valid" }`
 
 **Edit Album**
 ----
@@ -145,14 +166,23 @@ None
   
 
 * **Data Params**
- {
-    "userId": `[integer]`,
-     "title": ´[string]`,
-  } 
-     
+  
+  **Optional:**
+ 
+   `userId=[integer]` <br />
+   `title=[string 255]` <br />
+   `completed=[boolean]` <br />
+   
+   **Example:**
+```javascript
+  {
+     "userId": [integer],
+     "title": [string],
+     }
+```     
 * **Success Response:**
 
-  * **Code:** 200 OK <br />
+  * **Code:** 201 OK <br />
     **Content:** `{  "userId": 1,    "id": 1,    "title": "quidem molestiae enim-2"  }`
  
 * **Error Response:**
@@ -163,7 +193,7 @@ None
     OR
     
    * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** `{ error : "mandatory fields are missing" }`
+    **Content:** `{ error : "mandatory fields are missing",,fields:[field1,field2] }`
     
 **Delete Album**
 ----
@@ -187,10 +217,10 @@ None
   
 * **Success Response:**
 
-  * **Code:** 203 – OK – The resource was successfully deleted <br />
-    **Content:** ``
+  * **Code:** 203 – OK  <br />
+    **Content:** `{The resource was successfully deleted }`
  
-* **Error Response:**
+* **Error Response:** 
 
   * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "This album doesn't exist" }` 
