@@ -56,12 +56,12 @@
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** ```javascript { error : "The JSON is not valid" }```
+    **Content:** `{ error : "The JSON is not valid" }`
 
   OR
 
   * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** ```javascript{ error : "mandatory fields are missing", fields:[field1,field2,field3] }```
+    **Content:** `{ error : "mandatory fields are missing", fields:[field1,field2,field3] }`
 
 **Get a photo**
 ----
@@ -105,7 +105,7 @@
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** ```javascript{ error : "The photo not exists with the supplied id." }```
+    **Content:** `{ error : "The photo not exists with the supplied id." }`
     
 **Get photos**
 ----
@@ -188,7 +188,7 @@
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** ```javascript{ error : "Query is not valid" }```
+    **Content:** `{ error : "Query is not valid" }`
     
 **Update photo**
 ----
@@ -249,12 +249,12 @@
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** ```javascript{ error : "The JSON is not valid" }```
+    **Content:** `{ error : "The JSON is not valid" }`
     
   OR
     
   * **Code:** 404 NOT FOUND <br />
-    **Content:** ```javascript{ error : "Photo not exists with the supplied id." }```
+    **Content:** `{ error : "Photo not exists with the supplied id." }`
     
 **Delete a photo**
 ----
@@ -281,9 +281,9 @@
 * **Success Response:**
 
   * **Code:** 204 - OK <br />
-    **Content:** ```{ error : "Photo deleted successfully" }```
+    **Content:** `{ error : "Photo deleted successfully" }`
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** ```{ error : "Photo not exists the supplied id." }```
+    **Content:** `{ error : "Photo not exists the supplied id." }`
