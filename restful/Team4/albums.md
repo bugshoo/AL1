@@ -127,11 +127,11 @@ This service create an album of pictures
    * **Code:** 201 OK <br />
     **Content:** <br />
     ```
-    {
+{
     	"userId": n,
-		"id": n,
-		"title": "title n"
-	}
+	"id": n,
+	"title": "title n"
+}
 	```
  
 * **ERROR RESPONSE:**
@@ -154,22 +154,20 @@ This service create an album of pictures
 
   /albums/:id
 
-* **Method:**
+* **METHOD:**
 
   `PUT`
   
-*  **URL Params**
-  
-  **Required:**
- 
-   `id=[integer]`  
-  
+*  **URL PARAMS**
+	* **Required:**
+		`id=[integer]`  
+  	* **Optional:**
 
-* **Data Params**
- {
-    "userId": `[integer]`,
-     "title": ´[string]`,
-  } 
+* **DATA PARAMS:**
+{
+"userId": `[integer]`,
+"title": `[string]`,
+}
      
 * **Success Response:**
 
