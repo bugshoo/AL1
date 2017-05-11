@@ -20,10 +20,10 @@
 Create a single user
 
 * **URL** 	
-		rest/v1/users
+		_/rest/v1/users_
 
 * **Method** 
-		POST
+		´POST´
 
 * **URL Params** 
 
@@ -36,56 +36,57 @@ Create a single user
 		
 		Required:
 
-			name=[string, maximum = 255]
-			username=[string, unique, maximum = 55]
-			email=[string, format_validation = example@example.com, maximum = 255]
+			name = ´[string, maximum = 255]´
+			username = ´[string, unique, maximum = 55]´
+			email = ´[string, format_validation = example@example.com, maximum = 255]´
 
 		Optional:
 
 			address=[
-					street=[string, maximum = 255]
-					suite=[string, maximum = 55]
-					city=[string, maximum = 55]
-					zipcode=[string, maximum = 32]
+					street = ´[string, maximum = 255]´
+					suite = ´[string, maximum = 55]´
+					city = ´[string, maximum = 55]´
+					zipcode = ´[string, maximum = 32]´
 					geo=[
-						lat=[double, signed]
-						lng=[double, signed]
+						lat = ´[double, signed]´
+						lng = ´[double, signed]´
 					]
 				]
-			phone=[string, maximum = 55]
-			website=[string, maximum = 255]
-			company=[
-					name=[string, maximum = 255]
-					catchPhrase=[string, maximum = 255]
-					bs=[string, maximum = 255]
+			phone = ´[string, maximum = 55]´
+			website = ´[string, maximum = 255]´
+			company = [
+					name = ´[string, maximum = 255]´
+					catchPhrase = ´[string, maximum = 255]´
+					bs = ´[string, maximum = 255]´
 				]
 				
 
 * **Sucess Response** :
+
 		Code:201
 		Content: [
 			 {
 			    "user": {
-                    "id": 2,   
-                    "name": "Ervin Howell",
-                    "username": "Antonette",
-                    "email": "Shanna@melissa.tv",
-                    "address": {
-                    "street": "Victor Plains",
-                    "suite": "Suite 879",
-                    "city": "Wisokyburgh",
-                    "zipcode": "90566-7771",
-                    "geo": {
-                        "lat": "-43.9509",
-                        "lng": "-34.4618"
-                    }
-                },
+		    "id": 2,   
+		    "name": "Ervin Howell",
+		    "username": "Antonette",
+		    "email": "Shanna@melissa.tv",
+		    "address": {
+		    "street": "Victor Plains",
+		    "suite": "Suite 879",
+		    "city": "Wisokyburgh",
+		    "zipcode": "90566-7771",
+		    "geo": {
+			"lat": "-43.9509",
+			"lng": "-34.4618"
+		    }
+		},
 				"msg": "User created correctly"
-		  	 }
+			 }
 		]
 
 * **Error Response** :
-		
+
 		Code:401 BAD REQUEST 
 		Content:{error:  the request was invalid, {field1, field2,...,fieldn} don't have the specified format.}
 
@@ -93,6 +94,7 @@ Create a single user
 		Content:{error: {field1, field2,.., fieldn} are missing in the payload}
 
 * **Sample Call** :
+
 		$.ajax({
 		    url: "/users",
 		    dataType: "json",
@@ -110,11 +112,11 @@ Create a single user
 					"lat": "-43.9509",
 					"lng": "-34.4618"
 				}
-    		}",
+		}",
 		    success : function(r) {
-		     	console.log(r);
+			console.log(r);
 		    }
-	  	});
+		});
 
 * **Notes** :
         id:[assigned by the service]
@@ -127,32 +129,51 @@ List all users by filters and an order
 		rest/v1/users
 
 * **Method** 
-		GET
+		´GET´
 
 * **URL Params** 
 
         Requiered:
-	        offset=[integer] 
-	        limit=[integer, default=20]
+	        offset = ´[integer]´ 
+	        limit = ´[integer, default=20]´
             example: rest/v1/users?offset=0&limit=8
 
 	    Optional:
-            name_order = [asc | des] 
+            name_order = ´[asc | des]´ 
             examples :
 	    - by order ascendent  = rest/v1/users?offset=0&limit=8&name_order=asc  
 	    - by order descendent = rest/v1/users?offset=0&limit=8&name_order=des 
-            userID_filter = [=]
+            IDUser_order = ´[asc | des]´
             examples :
-	    -by user_ID equal to 2 = rest/v1/users?offset=0&limit=8&userID_filter=2 
-            title_filter = [ = | %pattern%]
+	    - by order ascendent  = rest/v1/users?offset=0&limit=8&IDUser_order=asc  
+	    - by order descendent = rest/v1/users?offset=0&limit=8&IDUser_order=des 
+            name_filter = [%pattern%]
             examples : 
-	    - by title equal to Manu = rest/v1/users?offset=0&limit=8&title_filter=Manu 
-            - by title that start with M = rest/v1/users?offset=0&limit=8&title_filter=%M% 
+            - by name that start with M = rest/v1/users?offset=0&limit=8&name_filter=%M% 
+	    - by name that qual to nano = rest/v1/users?offset=0&limit=8&name_filter=nano 
+	    username_filter = [ = | %pattern%]
+            examples : 
+            - by username that start with M = rest/v1/users?offset=0&limit=8user&name_filter=%M% 
+	    - by username that equal to nano = rest/v1/users?offset=0&limit=8&username_filter=nano 
+	    email_filter = [ = | %pattern%]
+            examples : 
+            - by email that start with M = rest/v1/users?offset=0&limit=8&email_filter=%M% 
+	    - by email that qual to nano = rest/v1/users?offset=0&limit=8&email_filter=nano 
+	    website_filter = [ = | %pattern%]
+            examples : 
+            - by website that start with M = rest/v1/users?offset=0&limit=8&website_filter=%M% 
+	    - by website that equal to nano = rest/v1/users?offset=0&limit=8&website_filter=nano 
+	    company_name_filter = [ = | %pattern%]
+            examples : 
+            - by company_name that start with M = rest/v1/users?offset=0&limit=8&company_name_filter=%M% 
+	    - by company_name  that equal to nano = rest/v1/users?offset=0&limit=8&company_filter=nano 
             
 * **Data Params** 
-        none
+        
+	None
 
 * **Sucess Response** :
+
         Code:200
         Content:  [
                     totalCounts:2,
@@ -206,10 +227,12 @@ List all users by filters and an order
                     }
 	             ]
  * **Error Response** :
+ 
            	Code:401 BAD REQUEST 
 		    Content:{error:  the request was invalid, {field1, field2,...,fieldn} don't have the specified format.}
 
   * **Sample Call** *:
+  
             $.ajax({
                 url: "/albums",
                 dataType: "json",
@@ -233,7 +256,7 @@ Update a single user
 
 * **URL Params** 
 
-		userId=[integer, not editable]
+		userId=´[integer, not editable]´
 
 		Optional:
 			None
@@ -242,9 +265,9 @@ Update a single user
 		
 		Required:
 
-			name=[string, maximum = 255]
-			username=[string, unique, maximum = 55]
-			email=[string, format_validation = example@example.com, maximum = 255]
+			name=´[string, maximum = 255]´
+			username=´[string, unique, maximum = 55]´
+			email=´[string, format_validation = example@example.com, maximum = 255]´
 
 		Optional:
 
@@ -267,6 +290,7 @@ Update a single user
 				]
 
 * **Sucess Response** :
+
 		Code:201
 		Content: [
 			 {
@@ -298,6 +322,7 @@ Update a single user
 		Content:{error: {field1, field2,.., fieldn} are missing in the payload}
 
 * **Sample Call** :
+
 		$.ajax({
 		    url: "/users/:6",
 		    dataType: "json",
@@ -336,7 +361,7 @@ Delete a single user
 
 * **URL Params** 
 		Required
-			id=[integer, not editable]
+			id=´[integer, not editable]´
 		Optional:
 			None
 * **Data Params** 
@@ -347,6 +372,7 @@ Delete a single user
 			None
 
 * **Sucess Response** :
+
 		Code:204
 		Content: [ 
 				"msg": "User delete correctly"
@@ -360,6 +386,7 @@ Delete a single user
 
 
 * **Sample Call** :
+
 		$.ajax({
 		    url: "/users/:5",
 		    dataType: "json",
