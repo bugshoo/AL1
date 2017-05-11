@@ -1,17 +1,31 @@
 # API photo's especifications
 
+## Contents
+  - [list photos](#list-photos) 
+  - [get photo](#get-photo) 
+  - [create photo](#create-photo) 
+  - [update photo](#update-photo) 
+  - [delete photo](#delete-photo) 
+
+| method | url | description |
+GET  	/photos
+GET 	/photos/:id
+POST 	/photos
+PUT		/photos
+DELETE	/photos
+
 
 ## Data params' description
-```
+
   | Field name   |      Type      |  Description |
   |--------------|:--------------:|-------------:|
   |albumId       |[integer]       |              |
   |title         |[alphanumeric]  |              |
   |file          |[file]          |              |
-```  
 
-**List Photos**
-----
+
+## List Photos
+
   Returns json data about all the photos.
 
 * **URL**
@@ -78,8 +92,8 @@
     });
   ```
   
-**Show Photos**
-----
+## Get photo
+
   Returns json data about a single photo.
 
 * **URL**
@@ -196,8 +210,8 @@
     });
   ```
   
-**Edit photo**
-----
+## Update photo
+
   Returns json data about a photo's update.
 
 * **URL**
@@ -261,8 +275,8 @@
     });
   ```
 
-**Delete photo**
-----
+## Delete photo
+
   Returns json data about a deleted photo.
 
 * **URL**
