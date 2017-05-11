@@ -115,20 +115,20 @@ This service create an album of pictures
 		None
 
 * **DATA PARAMS:**
-```javascript
+	```javascript
  	{
     		"userId": `[integer]`,
     		"title": `[string]`,
   	} 
-  ```
+ 	 ```
 
 * **SUCESS RESPONSE:**
   
    * **Code:** 201 OK <br />
     **Content:** <br />
     ```
-    	{
-	 	"userId": n,
+    {
+    	"userId": n,
 		"id": n,
 		"title": "title n"
 	}
