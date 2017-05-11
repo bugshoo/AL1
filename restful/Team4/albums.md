@@ -127,11 +127,11 @@ This service create an album of pictures
    * **Code:** 201 OK <br />
     **Content:** <br />
     ```
-{
+    {
     	"userId": n,
-	"id": n,
-	"title": "title n"
-}
+		"id": n,
+		"title": "title n"
+	}
 	```
  
 * **ERROR RESPONSE:**
