@@ -3,10 +3,11 @@
 ## Detail especifications
   | Method       |Endpoint          |  Description |
   |:------------:|------------------|:------------:|
-  |`GET`         |/photos     |              |
-  |`GET`         |/photos/:id |              |
-  |`POST`        |/photos     |              |
-  |`PUT`         |/photos     |              |
+  |`GET`         |/photos     |list photos             |
+  |`GET`         |/photos/:id |get a photo              |
+  |`POST`        |/photos     |create photo              |
+  |`PUT`         |/photos     |update photo              |
+  |`DELETE`         |/photos     |delete photo              |
 
 ## Data params' description
 
@@ -47,26 +48,34 @@
 
   * **Pagin params**
 
-  default: count=10, page=1
+    default: count=10, page=1
   
-  `?count=[integer]&page=[integer]`
+    `?count=[integer]&page=[integer]`
 
   - example
-  `photos\count=15&page=3`
+  
+    `photos\count=15&page=3`
   
   
 * **ordering data param**
 
   - ascending
-  `?sort=title`
+  
+    `?sort=title`
   
   - descending
-  `sort=-title`
+  
+    `sort=-title`
   
 * **Filtering**
 
-  - albumId?(equal)
-  title (equal | like) 
+  - albumId (equal)
+  
+    `filter=albumId&value=[integer]`
+  
+  - title (equal | like)
+
+    `filter=title&value=[string],{equal,like}`
   
 * **Data Params**
 
