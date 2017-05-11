@@ -1,22 +1,66 @@
-# API photo's especifications
+# API user's especifications
+
+## Detail especifications
+  | Method       |Endpoint          |  Description |
+  |:------------:|------------------|:------------:|
+  |`GET`         |/api/v1/users     |              |
+  |`GET`         |/api/v1/users/:id |              |
+  |`POST`        |/api/v1/users     |              |
+  |`PUT`         |/api/v1/users     |              |
+  |`DELETE`      |/api/v1/users/:id |              |
+  
 
 
 ## Data params' description
 
-  | Field name   |      Type      |  Description |
-  |--------------|:--------------:|-------------:|
-  |albumId       |[integer]       |              |
-  |title         |[alphanumeric]  |              |
-  |file          |[file]          |              |
+### users
+
+  | Field name   |      Type      |  Description | Required |
+  |:------------:|:--------------:|:------------:|:--------:|
+  |id            |[integer]       |              |          |
+  |name          |[string]        |255           |true      |
+  |username      |[string]        |55            |true      |
+  |email         |[string]        |255           |true      |
+  |address       |[address]       |              |false     |
+  |phone         |[string]        |55            |true      |
+  |website       |[string]        |255           |false     |
+  |company       |[company]       |              |true      |
+  
+### address(subfield)   
+
+  | Field name   |      Type      |  Description | Required |
+  |:------------:|:--------------:|:------------:|:--------:|
+  |street        |[string]        |255           |false     |
+  |suit          |[string]        |55            |false     |
+  |city          |[string]        |55            |false     |
+  |zipcode       |[string]        |32            |false     |
+  |geo           |[geo]           |              |false     |
+  
+  
+### geo(subfield) 
+
+  | Field name   |      Type      |  Description | Required |
+  |:------------:|:--------------:|:------------:|:--------:|
+  |lat           |[double signed] |              | false    |
+  |lng           |[double signed] |              | false    |
+  
+  
+### company(subfield)
+
+  | Field name   |      Type      |  Description | Required |
+  |:------------:|:--------------:|:------------:|:--------:|
+  |name          |[string]        |255           | false    |
+  |catchPhrase   |[string]        |55            | false    |
+  |bs            |[string]        |255           | false    |
   
 
-**List Photos**
+**List Users**
 ----
-  Returns json data about all the photos.
+  Returns json data about all the users.
 
 * **URL**
 
-  /photos/
+  /api/v1/users
 
 * **Method:**
 
@@ -24,48 +68,106 @@
   
 * **URL Params**
 
-  None 
   
+  - Paginations
+  
+   /api/v1/users?count=[integer]&page[integer]
+
+    | Endpoint                   |  Description                              |
+    |:--------------------------:|:-----------------------------------------:|
+    |/api/v1/users?count=5&page=2| Return the second ones 5 users' records   |
+    |/api/v1/users?count=7&page=5| Return the fifth ones 7 users' records    |
+    
+  - Ordering
+  
+  /api/v1/users?sort={ | -} {name | id}
+
+    | Endpoint                   |  Description                              |
+    |:--------------------------:|:-----------------------------------------:|
+    |/api/v1/users?sort=-name    | Return the descendent users's list by name|
+    |/api/v1/users?sort=name     | Return the ascendent users's list by name |
+    |/api/v1/users?sort=id       | Return the ascendent users's list by id   |
+    |/api/v1/users?sort=-id      | Return the ascendent users's list by id   |
+    
+
+  - Filtering
+  
+  /api/v1/users?filter={name | username | email | website | company}&value=[string]
+   
+    | Endpoint                                         |  Description                                                     |
+    |:------------------------------------------------:|:----------------------------------------------------------------:|
+    |/api/v1/users?filter=username&value=jeffer,like   | Return  users' records with username like %jeffer%               |
+    |/api/v1/users?filter=email&value=jeffer,eq        | Return  user record with email jhon.pantoja@correounivalle.edu.co   |
+
+
 * **Data Params**
 
   None
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `[
+  * **Code:** `200` <br />
+    **Content:** 
+ ```javascript
+[
   {
-    "albumId": 1,
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": "http://placehold.it/600/92c952",
-    "thumbnailUrl": "http://placehold.it/150/92c952"
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets"
+    }
   },
   {
-    "albumId": 1,
-    "id": 2,
-    "title": "reprehenderit est deserunt velit ipsam",
-    "url": "http://placehold.it/600/771796",
-    "thumbnailUrl": "http://placehold.it/150/771796"
-  },
-  {
-    "albumId": 1,
-    "id": 3,
-    "title": "officia porro iure quia iusto qui ipsa ut modi",
-    "url": "http://placehold.it/600/24f355",
-    "thumbnailUrl": "http://placehold.it/150/24f355"
-  },]`
+    id: 2,
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618"
+      }
+    },
+    phone: "010-692-6593 x09125",
+    website: "anastasia.net",
+    company: {
+      name: "Deckow-Crist",
+      catchPhrase: "Proactive didactic contingency",
+      bs: "synergize scalable supply-chains"
+    }
+  }
+]
+```
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "This photos don't exist" }`
+  None
 
 * **Sample Call:**
 
   ```javascript
     $.ajax({
-      url: "/photos/",
+      url: "/api/v1/users",
       dataType: "json",
       type : "GET",
       success : function(r) {
@@ -76,11 +178,11 @@
   
 **Show Photos**
 ----
-  Returns json data about a single photo.
+  Returns json data about a single user.
 
 * **URL**
 
-  /photos/:id
+  /api/v1/users/:id
 
 * **Method:**
 
@@ -88,9 +190,10 @@
   
 *  **URL Params**
 
-   **Required:**
- 
-   `id=[integer]`
+  | Field name   |      Type      |  Description | Require |
+  |:------------:|:--------------:|:------------:|:-------:|
+  |id            |Integer         |              | true    |
+
 
 * **Data Params**
 
@@ -98,25 +201,52 @@
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `{
-    "albumId": 1,
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": "http://placehold.it/600/92c952",
-    "thumbnailUrl": "http://placehold.it/150/92c952"
-  }`
+  Returns JSON representation of user 
+  
+  **Code:** `STATUS 200` <br />
+  **Content:**
+     
+```javascript
+ 
+ Code: 200
+ Content:
+
+  {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets"
+    }
+  }
+
+```
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "This photo doesn't exist" }`
+    **Content:** `{ error : "This user doesn't exist" }`
 
 * **Sample Call:**
 
   ```javascript
     $.ajax({
-      url: "/photos/1",
+      url: "/api/v1/users/1",
       dataType: "json",
       type : "GET",
       success : function(r) {
@@ -126,11 +256,11 @@
   ```
 **Create photo**
 ----
-  Returns json data about a photo created.
+  Create a new user and returns json data about a user created.
 
 * **URL**
 
-  /photos/
+  /api/v1/users
 
 * **Method:**
 
@@ -142,43 +272,103 @@
 
 * **Data Params**
 
-    albumId
-    title 
-    file
+   See definition in Data params' description
+
+
+*  *Example:*
     
-  *Example:*
-    
-    albumId: 1,
-    title: "officia porro iure quia iusto qui ipsa ut modi", 
-    file: "/home/user/image.jpg"
+```javascript
+
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets"
+    }
+  }
+
+```
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `{
-    "albumId": 1,
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": "http://placehold.it/600/92c952",
-    "thumbnailUrl": "http://placehold.it/150/92c952"
-  }`
+  * **Code:** `201` <br />
+    **Content:** 
+```javascript
+
+  {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets"
+    }
+  }
+
+```
  
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "File's size not supported" }`
+    **Content:** `{ error : "some property was not provided or the value is too long" }`
 
 * **Sample Call:**
 
   ```javascript
     $.ajax({
-      url: "/photos/",
+      url: "/api/v1/users",
       dataType: "json",
       data: {
-        albumId: 1,
-        title: "officia porro iure quia iusto qui ipsa ut modi",
-        file: "/home/user/image.jpg"
-      }
+                name: "Leanne Graham",
+                username: "Bret",
+                email: "Sincere@april.biz",
+                address: {
+                  street: "Kulas Light",
+                  suite: "Apt. 556",
+                  city: "Gwenborough",
+                  zipcode: "92998-3874",
+                  geo: {
+                    lat: "-37.3159",
+                    lng: "81.1496"
+                  }
+                },
+                phone: "1-770-736-8031 x56442",
+                website: "hildegard.org",
+                company: {
+                  name: "Romaguera-Crona",
+                  catchPhrase: "Multi-layered client-server neural-net",
+                  bs: "harness real-time e-markets"
+                }
+              },
       type : "POST",
       success : function(r) {
         console.log(r);
@@ -188,11 +378,11 @@
   
 **Edit photo**
 ----
-  Returns json data about a photo's update.
+  Update a user and returns json data about a user updated.
 
 * **URL**
 
-  /photos/
+  /api/v1/users
 
 * **Method:**
 
@@ -204,57 +394,123 @@
 
 * **Data Params**
 
-    albumId
-    title 
-    file
+   See definition in Data params' description
+
+
+*  *Example:*
     
-  *Example:*
-    
-    albumId: 1,
-    title: "officia porro iure quia iusto qui ipsa ut modi", 
-    file: "/home/user/image.jpg"
+```javascript
+
+  {
+      id: 2,
+      name: "Ervin Howell",
+      username: "Antonette",
+      email: "Shanna@melissa.tv",
+      address: {
+        street: "Victor Plains",
+        suite: "Suite 879",
+        city: "Wisokyburgh",
+        zipcode: "90566-7771",
+        geo: {
+          lat: "-43.9509",
+          lng: "-34.4618"
+        }
+      },
+      phone: "010-692-6593 x09125",
+      website: "anastasia.net",
+      company: {
+        name: "Deckow-Crist",
+        catchPhrase: "Proactive didactic contingency",
+        bs: "synergize scalable supply-chains"
+      }
+  }
+
+```
 
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `{
-    "albumId": 1,
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": "http://placehold.it/600/92c952",
-    "thumbnailUrl": "http://placehold.it/150/92c952"
-  }`
+  * **Code:** `200` <br />
+    **Content:** 
+```javascript
+
+  {
+    id: 2,
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618"
+      }
+    },
+    phone: "010-692-6593 x09125",
+    website: "anastasia.net",
+    company: {
+      name: "Deckow-Crist",
+      catchPhrase: "Proactive didactic contingency",
+      bs: "synergize scalable supply-chains"
+    }
+  }
+
+```
  
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "File's size not supported" }`
+    **Content:** `{ error : "some property was not provided or the value is too long" }`
+    
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "This user doesn't exist" }`
 
 * **Sample Call:**
 
   ```javascript
     $.ajax({
-      url: "/photos/",
+      url: "/api/v1/users",
       dataType: "json",
       data: {
-        albumId: 1,
-        title: "officia porro iure quia iusto qui ipsa ut modi",
-        file: "/home/user/image.jpg"
-      }
+                id: 2,
+                name: "Ervin Howell",
+                username: "Antonette",
+                email: "Shanna@melissa.tv",
+                address: {
+                  street: "Victor Plains",
+                  suite: "Suite 879",
+                  city: "Wisokyburgh",
+                  zipcode: "90566-7771",
+                  geo: {
+                    lat: "-43.9509",
+                    lng: "-34.4618"
+                  }
+                },
+                phone: "010-692-6593 x09125",
+                website: "anastasia.net",
+                company: {
+                  name: "Deckow-Crist",
+                  catchPhrase: "Proactive didactic contingency",
+                  bs: "synergize scalable supply-chains"
+                }
+              },
       type : "PUT",
       success : function(r) {
         console.log(r);
       }
     });
   ```
-  5
+
+
 **Delete photo**
 ----
-  Returns json data about a deleted photo.
+  Returns json data about a deleted user.
 
 * **URL**
 
-  /photos/
+  /api/v1/users/:id
 
 * **Method:**
 
@@ -262,7 +518,10 @@
   
 *  **URL Params**
   
-  id=[integer]
+    | Field name   |      Type      |  Description | Require |
+    |:------------:|:--------------:|:------------:|:-------:|
+    |id            |Integer         |              | true    |
+
 
 * **Data Params**
 
@@ -270,23 +529,19 @@
   
 * **Success Response:**
 
-  * **Code:** 200 <br />
-    **Content:** `{
-    "albumId": 1,
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-  }`
- 
+  * **Code:** `200`  <br />
+    **Content:** `{message: "The user was successfully removed"}`
+     
 * **Error Response:**
-
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "File not found" }`
+    
+   * **Code:** `404` NOT FOUND <br />
+       **Content:** `{ error : "This user doesn't exist" }`
 
 * **Sample Call:**
 
   ```javascript
     $.ajax({
-      url: "/photos/1",
+      url: "/api/v1/users/1",
       dataType: "json",
       type : "DELETE",
       success : function(r) {
