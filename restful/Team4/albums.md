@@ -100,7 +100,7 @@ Returns json data about a set of ten albums by page
 
 **CREATE ALBUM**
 ----
-This service create an album of pictures
+This service create an album 
 
 * **URL**<br />
 	_/rest/v1/albums_
@@ -116,8 +116,9 @@ This service create an album of pictures
 		None
 
 * **DATA PARAMS:**
-	userId: `[integer]`,
-    	title: `[string]`,
+	
+	userID: `[integer]`
+	title: `[string, maximum 255]`,
 
 * **SUCESS RESPONSE:**
   
@@ -135,7 +136,7 @@ This service create an album of pictures
 
   * **Code:** 400  BAD REQUEST- <br />
     **Content:** <br />
-    `{error: "The JSON is not valid"}`
+    `{error: "The JSON is not valid,the album {title} cant not be created "}`
 
 
   * **Code:** 422 UNPROCESSABLE ENTRY <br />
@@ -145,7 +146,7 @@ This service create an album of pictures
 
 **EDIT ALBUM**
 ----
-  Returns json data about a album update.
+  Returns json data about an album update.
 
 * **URL**<br />
   _/rest/v1/albums/:id_
@@ -156,28 +157,37 @@ This service create an album of pictures
   
 *  **URL PARAMS**
 	* **Required:**
-		`id=[integer]`  
+		id = `[integer]` 
+		title = `[string, maximum 255]`
   	* **Optional:**
 
 * **DATA PARAMS:**
 {
 "userId": `[integer]`,
-"title": `[string]`,
+"title": `[string, maximum 255]`,
 }
      
 * **Success Response:**
 
   * **Code:** 200 OK <br />
-    **Content:** `{  "userId": 1,    "id": 1,    "title": "Title edited n"  }`
+    **Content:**  <br /> <br />
+    `{  "userId": 1,    "id": 1,    "title": "Title edited n"  }`
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "This album doesn't exist" }`
+    **Content:**  <br />
+    `{ error : "This album {title} doesn't exist" }`
 
     
    * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** `{ error : "mandatory fields are missing" }`
+    **Content:**  <br />
+    `{ error : "mandatory fields are missing" }`
+    
+    
+   * **NOTE:**
+   
+   	userId: `[integer, assigned, no editable]`
     
 **DELETE ALBUM**
 ----
@@ -201,8 +211,9 @@ This service create an album of pictures
   
 * **SUCESS RESPONSE:**
 
-  * **Code:** 203 – OK – The album {title} with id: {id_album} was successfully deleted <br />
+  * **Code:** 203 – OK –  <br />
     **Content:** 
+    `{"message": "The album {title} with id: {id_album} was successfully deleted"}`
  
 * **ERROR RESPONSE:**
 
