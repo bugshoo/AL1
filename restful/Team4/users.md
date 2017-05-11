@@ -17,15 +17,15 @@ Create a single user
 
 	*Data Params
 		
-        Required:
+		Required:
 
-		name=[string, maximum = 255]
-		username=[string, unique, maximum = 55]
-		email=[string, format_validation = example@example.com, maximum = 255]
-		
+			name=[string, maximum = 255]
+			username=[string, unique, maximum = 55]
+			email=[string, format_validation = example@example.com, maximum = 255]
+
 		Optional:
 
-		address=[
+			address=[
 					street=[string, maximum = 255]
 					suite=[string, maximum = 55]
 					city=[string, maximum = 55]
@@ -35,13 +35,14 @@ Create a single user
 						lng=[double, signed]
 					]
 				]
-				phone=[string, maximum = 55]
-				website=[string, maximum = 255]
-				company=[
+			phone=[string, maximum = 55]
+			website=[string, maximum = 255]
+			company=[
 					name=[string, maximum = 255]
 					catchPhrase=[string, maximum = 255]
 					bs=[string, maximum = 255]
 				]
+				
 
 	*Sucess Response:
 		Code:201
@@ -208,30 +209,29 @@ List all users by filters and an order
 Update a single user
 
 	*URL	
-		rest/v1/users
+		rest/v1/users/:userId
 
 	*Method
 		PUT
 
 	*URL Params
 
-		None
+		userId=[integer, not editable]
 
 		Optional:
 			None
 
 	*Data Params
 		
-        Required:
+		Required:
 
-		id=[integer, not editable]
-		
+			name=[string, maximum = 255]
+			username=[string, unique, maximum = 55]
+			email=[string, format_validation = example@example.com, maximum = 255]
+
 		Optional:
 
-		name=[string, maximum = 255]
-		username=[string, unique, maximum = 55]
-		email=[string, format_validation = example@example.com, maximum = 255]
-		address=[
+			address=[
 					street=[string, maximum = 255]
 					suite=[string, maximum = 55]
 					city=[string, maximum = 55]
@@ -241,9 +241,9 @@ Update a single user
 						lng=[double, signed]
 					]
 				]
-				phone=[string, maximum = 55]
-				website=[string, maximum = 255]
-				company=[
+			phone=[string, maximum = 55]
+			website=[string, maximum = 255]
+			company=[
 					name=[string, maximum = 255]
 					catchPhrase=[string, maximum = 255]
 					bs=[string, maximum = 255]
@@ -254,21 +254,21 @@ Update a single user
 		Content: [
 			 {
 			    "user": {
-                    "id": 2,   
-                    "name": "Ervin Howell",
-                    "username": "Antonette",
-                    "email": "Shanna@melissa.tv",
-                    "address": {
-                    "street": "Victor Plains",
-                    "suite": "Suite 879",
-                    "city": "Wisokyburgh",
-                    "zipcode": "90566-7771",
-                    "geo": {
-                        "lat": "-43.9509",
-                        "lng": "-34.4618"
-                    }
-                },
-				"msg": "User updated correctly"
+				    "id": 2,   
+				    "name": "Ervin Howell",
+				    "username": "Antonette",
+				    "email": "Shanna@melissa.tv",
+				    "address": {
+				    "street": "Victor Plains",
+				    "suite": "Suite 879",
+				    "city": "Wisokyburgh",
+				    "zipcode": "90566-7771",
+				    "geo": {
+					"lat": "-43.9509",
+					"lng": "-34.4618"
+				    }
+				},
+			    "msg": "User updated correctly"
 		  	 }
 		]
 
@@ -282,11 +282,10 @@ Update a single user
 
 	*Sample Call:
 		$.ajax({
-		    url: "/users",
+		    url: "/users/:6",
 		    dataType: "json",
-		    type : "POST",
+		    type : "PUT",
 			data : "{
-				"id"
 				"name": "Ervin Howell",
 				"username": "Antonette",
 				"email": "Shanna@melissa.tv",
@@ -307,3 +306,50 @@ Update a single user
 
 	*Notes:
         id:[assigned by the service]
+	
+**DELETE USERS**
+
+Delete a single user
+
+	*URL	
+		rest/v1/users/:userId
+
+	*Method
+		DELETE
+
+	*URL Params
+		Required
+			id=[integer, not editable]
+		Optional:
+			None
+	*Data Params
+		
+        	Required:
+			None		
+		Optional:
+			None
+
+	*Sucess Response:
+		Code:204
+		Content: [ 
+				"msg": "User delete correctly"
+		]
+
+	*Error Response:
+		
+		Code:401 BAD REQUEST 
+		Content:{error:  the request was invalid, userId doesn't exist.}
+
+
+
+	*Sample Call:
+		$.ajax({
+		    url: "/users/:5",
+		    dataType: "json",
+		    type : "DELETE",
+		    success : function(r) {
+		     	console.log(r);
+		    }
+	  	});
+
+	*Notes:
