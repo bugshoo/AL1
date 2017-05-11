@@ -178,8 +178,7 @@ This service create an album of pictures
 
   * **Code:** 404 NOT FOUND <br />
     **Content:** `{ error : "This album doesn't exist" }`
-    
-    OR
+
     
    * **Code:** 422 UNPROCESSABLE ENTRY <br />
     **Content:** `{ error : "mandatory fields are missing" }`
