@@ -16,6 +16,7 @@
 ## Data params' description
 
 ###users
+
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
   |id            |[integer]       |              |          |
@@ -27,7 +28,8 @@
   |website       |[string]        |255           |false     |
   |company       |[company]       |              |true      |
   
-###address(subfield)    
+###address(subfield)   
+
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
   |street        |[string]        |255           |false     |
@@ -37,7 +39,8 @@
   |geo           |[geo]           |              |false     |
   
   
-###geo(subfield)    
+###geo(subfield) 
+
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
   |lat           |[double signed] |              | false    |
@@ -45,6 +48,7 @@
   
   
 ###company(subfield)
+
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
   |name          |[string]        |255           | false    |
