@@ -1,21 +1,21 @@
-#CREATE USER
+**CREATE USER**
 
 Create a single user
 
-	-URL	
+	*URL	
 		rest/v1/users
 
-	-Method
+	*Method
 		POST
 
-	-URL Params
+	*URL Params
 
 		None
 
 		Optional:
 			None
 
-	-Data Params
+	*Data Params
 		
         Required:
 
@@ -43,7 +43,7 @@ Create a single user
 					bs=[string, maximum = 255]
 				]
 
-	-Sucess Response:
+	*Sucess Response:
 		Code:201
 		Content: [
 			 {
@@ -66,7 +66,7 @@ Create a single user
 		  	 }
 		]
 
-	-Error Response:
+	*Error Response:
 		
 		Code:401 BAD REQUEST 
 		Content:{error:  the request was invalid, {field1, field2,...,fieldn} don't have the specified format.}
@@ -74,7 +74,7 @@ Create a single user
 		Code:422 UNPROCESSABLE ENTITY
 		Content:{error: {field1, field2,.., fieldn} are missing in the payload}
 
-	-Sample Call:
+	*Sample Call:
 		$.ajax({
 		    url: "/users",
 		    dataType: "json",
@@ -98,20 +98,20 @@ Create a single user
 		    }
 	  	});
 
-	-Notes:
+	*Notes:
         id:[assigned by the service]
 
-#LIST USERS
+**LIST USERS**
 
 List all users by filters and an order
 
-    -URL	
+    *URL	
 		rest/v1/users
 
-	-Method
+	*Method
 		GET
 
-	-URL Params
+	*URL Params
 
         Requiered:
 	        offset=[integer] 
@@ -127,10 +127,10 @@ List all users by filters and an order
             filter by title, equal to, example : rest/v1/users?offset=0&limit=8&title_filter=Manu 
             filter by title, like, example : rest/v1/users?offset=0&limit=8&title_filter=%M% //title that start with M
             
-    -Data Params
+    *Data Params
         none
 
-    -Sucess Response:
+    *Sucess Response:
         Code:200
         Content:  [
                     totalCounts:2,
@@ -183,11 +183,11 @@ List all users by filters and an order
                             }
                     }
 	             ]
-        -Error Response:
+        *Error Response:
            	Code:401 BAD REQUEST 
 		    Content:{error:  the request was invalid, {field1, field2,...,fieldn} don't have the specified format.}
 
-        -Sample Call:
+        *Sample Call:
             $.ajax({
                 url: "/albums",
                 dataType: "json",
@@ -197,4 +197,4 @@ List all users by filters and an order
                 }
             });
 
-        -Notes:
+        *Notes:
