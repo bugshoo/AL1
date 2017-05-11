@@ -195,12 +195,12 @@ This service create an album of pictures
   `DELETE`
   
 *  **URL PARAMS**
-  
-  id = 1 `[integer]`
+
+	id = 1 `[integer]`
 
 * **DATA PARAMS**
 
-  None
+	None
   
 * **SUCESS RESPONSE:**
 
