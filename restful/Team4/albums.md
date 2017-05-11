@@ -102,7 +102,7 @@ Returns json data about a set of ten albums by page
 This service create an album of pictures
 
 * **URL**<br />
-	_/albums_
+	_/rest/v1/albums_
  
 * **METHOD:**
   
@@ -150,9 +150,8 @@ This service create an album of pictures
 ----
   Returns json data about a album update.
 
-* **URL**
-
-  /albums/:id
+* **URL**<br />
+  _/rest/v1/albums/:id_
 
 * **METHOD:**
 
@@ -183,3 +182,32 @@ This service create an album of pictures
    * **Code:** 422 UNPROCESSABLE ENTRY <br />
     **Content:** `{ error : "mandatory fields are missing" }`
     
+**DELETE ALBUM**
+----
+  Returns json data about a deleted photo.
+
+* **URL**
+
+  _/rest/v1/albums/:id_
+
+* **METHOD:**
+
+  `DELETE`
+  
+*  **URL PARAMS**
+  
+  id = 1 `[integer]`
+
+* **DATA PARAMS**
+
+  None
+  
+* **SUCESS RESPONSE:**
+
+  * **Code:** 203 – OK – The resource was successfully deleted <br />
+    **Content:** 
+ 
+* **ERROR RESPONSE:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "This album doesn't exist" }` 
