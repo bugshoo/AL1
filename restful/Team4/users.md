@@ -1,21 +1,38 @@
+
+
+<h1 align="center">API USERS</h1>
+
+<br>
+
+
+  |    SERVICE   |    METHOD    |       URL      |  DESCRIPTION |
+  |--------------|--------------|:--------------:|-------------:|
+  |List users    |GET           |_/rest/v1/users/_       | List all users by filters and an order|
+  |Create users  |POST          |_/rest/v1/users_        | Create a single user             |
+  |Delete users  |DELETE              |_/rest/v1/users/:IDuser_                 | Delete a single user  |
+  |Update users  |PUT           |   _/rest/v1/users/:IDuser_|  Update a single user            |
+
+</br>
+
+
 **CREATE USER**
 
 Create a single user
 
-	*URL	
+* **URL** 	
 		rest/v1/users
 
-	*Method
+* **Method** 
 		POST
 
-	*URL Params
+* **URL Params** 
 
 		None
 
 		Optional:
 			None
 
-	*Data Params
+* **Data Params** 
 		
 		Required:
 
@@ -44,7 +61,7 @@ Create a single user
 				]
 				
 
-	*Sucess Response:
+* **Sucess Response** :
 		Code:201
 		Content: [
 			 {
@@ -67,7 +84,7 @@ Create a single user
 		  	 }
 		]
 
-	*Error Response:
+* **Error Response** :
 		
 		Code:401 BAD REQUEST 
 		Content:{error:  the request was invalid, {field1, field2,...,fieldn} don't have the specified format.}
@@ -75,7 +92,7 @@ Create a single user
 		Code:422 UNPROCESSABLE ENTITY
 		Content:{error: {field1, field2,.., fieldn} are missing in the payload}
 
-	*Sample Call:
+* **Sample Call** :
 		$.ajax({
 		    url: "/users",
 		    dataType: "json",
@@ -99,20 +116,20 @@ Create a single user
 		    }
 	  	});
 
-	*Notes:
+* **Notes** :
         id:[assigned by the service]
 
 **LIST USERS**
 
 List all users by filters and an order
 
-    *URL	
+* **URL** 	
 		rest/v1/users
 
-	*Method
+* **Method** 
 		GET
 
-	*URL Params
+* **URL Params** 
 
         Requiered:
 	        offset=[integer] 
@@ -132,10 +149,10 @@ List all users by filters and an order
 	    - by title equal to Manu = rest/v1/users?offset=0&limit=8&title_filter=Manu 
             - by title that start with M = rest/v1/users?offset=0&limit=8&title_filter=%M% 
             
-    *Data Params
+* **Data Params** 
         none
 
-    *Sucess Response:
+* **Sucess Response** :
         Code:200
         Content:  [
                     totalCounts:2,
@@ -188,11 +205,11 @@ List all users by filters and an order
                             }
                     }
 	             ]
-        *Error Response:
+ * **Error Response** :
            	Code:401 BAD REQUEST 
 		    Content:{error:  the request was invalid, {field1, field2,...,fieldn} don't have the specified format.}
 
-        *Sample Call:
+  * **Sample Call** *:
             $.ajax({
                 url: "/albums",
                 dataType: "json",
@@ -208,20 +225,20 @@ List all users by filters and an order
 
 Update a single user
 
-	*URL	
+* **URL** 	
 		rest/v1/users/:userId
 
-	*Method
+* **Method** 
 		PUT
 
-	*URL Params
+* **URL Params** 
 
 		userId=[integer, not editable]
 
 		Optional:
 			None
 
-	*Data Params
+* **Data Params** 
 		
 		Required:
 
@@ -249,7 +266,7 @@ Update a single user
 					bs=[string, maximum = 255]
 				]
 
-	*Sucess Response:
+* **Sucess Response** :
 		Code:201
 		Content: [
 			 {
@@ -272,7 +289,7 @@ Update a single user
 		  	 }
 		]
 
-	*Error Response:
+* **Error Response** :
 		
 		Code:401 BAD REQUEST 
 		Content:{error:  the request was invalid, {field1, field2,...,fieldn} don't have the specified format.}
@@ -280,7 +297,7 @@ Update a single user
 		Code:422 UNPROCESSABLE ENTITY
 		Content:{error: {field1, field2,.., fieldn} are missing in the payload}
 
-	*Sample Call:
+* **Sample Call** :
 		$.ajax({
 		    url: "/users/:6",
 		    dataType: "json",
@@ -304,45 +321,45 @@ Update a single user
 		    }
 	  	});
 
-	*Notes:
-        id:[assigned by the service]
+* **Notes** :
+        	id:[assigned by the service]
 	
 **DELETE USERS**
 
 Delete a single user
 
-	*URL	
+* **URL	** 
 		rest/v1/users/:userId
 
-	*Method
+* **Method** 
 		DELETE
 
-	*URL Params
+* **URL Params** 
 		Required
 			id=[integer, not editable]
 		Optional:
 			None
-	*Data Params
+* **Data Params** 
 		
         	Required:
 			None		
 		Optional:
 			None
 
-	*Sucess Response:
+* **Sucess Response** :
 		Code:204
 		Content: [ 
 				"msg": "User delete correctly"
 		]
 
-	*Error Response:
+* **Error Response ** :
 		
 		Code:401 BAD REQUEST 
 		Content:{error:  the request was invalid, userId doesn't exist.}
 
 
 
-	*Sample Call:
+* **Sample Call** :
 		$.ajax({
 		    url: "/users/:5",
 		    dataType: "json",
@@ -352,4 +369,4 @@ Delete a single user
 		    }
 	  	});
 
-	*Notes:
+* **Notes** :
