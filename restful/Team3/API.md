@@ -25,19 +25,16 @@ URL
 METHOD
 GET
 
+
+
+METHOD
+POST
+ 
 URL PARAMS
 
 REQUIRED
 	
-	name: 		[string 255],
-	username: 	[string 55],
-	email: 		[string 255]
-
-OPTIONAL
-
-	phone:		[string 55],  	 
-	website:	[string 255]
-
+	body
 
 DATA PARAMS
 
@@ -69,18 +66,65 @@ DATA PARAMS
 
 SUCCESS RESPONSE
 
-Example:
-	Code: 200
-	Content: { OK }
+default                                        operacion exitosa
+                                
 
 ERROR RESPONSE
- 	Code: 400
-	Content: { error : "Bad request" }
+ 	405                                                entrada invalida
+
+----------------------------------------------------------------------------------------------------------------
+
+
+
+METHOD
+PUT                                                  
+
+Actualiza un usuario existente
+ 
+URL PARAMS
+
+REQUIRED
 	
-SIMPLE CALL
+	body
 
-$ curl 'http://IP-SERVER:PORT/rest/v1/users/add/name=gabriel&username=gabo&email=gbortega@gmail.com'
+DATA PARAMS
 
-NOTES
+{u: {
+	id: 	  [integer],
+	name:     [string],
+	username: [string],
+	email:    [string],
+	address:
+	{	street: [string],
+        	suite: [string],
+        	city: [string],
+        	zipcode: [string]
+	}
+        	geo:
+		{
+            		lat: [double signed].,
+            		lng: [double signed]
+		{
+	phone:   [string],
+	website: [string],
+        company:
+	{
+	        name: 		[string],
+	        catchPhrase:	[string],	
+	        bs: 		[string]
+	}
+}
 
-<This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself 
+SUCCESS RESPONSE
+
+default                                        operacion exitosa
+                                
+
+ERROR RESPONSE
+ 	
+400                                   id invalido
+
+404                                      usuario no encontrado
+
+405                                     excepcion de validacion
+
