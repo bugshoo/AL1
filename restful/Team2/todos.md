@@ -23,12 +23,13 @@
    `completed=[boolean]`
    
    **Example:**
-
-  `{
+  ```javascript
+  {
      "userId": [integer],
      "title": [string 255],
      "completed": [boolean]
-  }`
+  }
+  ```
 
 * **Success Response:**
 
@@ -36,22 +37,31 @@
 
   * **Code:** 201 - OK <br />
     **Content:**
- `{
-    "userId": 1,
-    "id": 4, 
-    "title": "et porro tempora",
-    "completed": true
-    }`
+    ```javascript
+    {
+       "userId": 1,
+       "id": 4, 
+       "title": "et porro tempora",
+       "completed": true
+    }
+    ```
  
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "The JSON is not valid" }`
+    **Content:** 
+    ```javascript
+    { error : "The JSON is not valid" }
+    ```
 
   OR
 
   * **Code:** 422 UNPROCESSABLE ENTITY <br />
-    **Content:** `{ error : "Mandatory fields are missing" }`
+    **Content:** 
+    ```javascript
+    { error : "Mandatory fields are missing",
+    fields: [field1, field2, field3]}
+    ```
     
 **Get a ToDo task**
 ----
@@ -81,17 +91,22 @@
 
   * **Code:** 200 - OK <br />
     **Content:**
- `{
-    "userId": 1,
-    "id": 4, 
-    "title": "et porro tempora",
-    "completed": true
-    }`
+    ```javascript
+    {
+       "userId": 1,
+       "id": 4, 
+       "title": "et porro tempora",
+       "completed": true
+     }
+     ```
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "No task exists with the supplied ID." }`
+    **Content:** 
+    ```javascript
+    { error : "No task exists with the supplied ID." }
+    ```
     
 **Get ToDo tasks**
 ----
@@ -143,25 +158,32 @@
 
   * **Code:** 200 - OK <br />
     **Content:**
- `[
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "delectus aut autem",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "quis ut nam facilis et officia qui",
-    "completed": false
-  }
-  ]`
+    ```javascript
+    { "count"=[integer],    
+      "value"= [
+     {
+       "userId": 1,
+       "id": 1,
+       "title": "delectus aut autem",
+       "completed": false
+     },
+     {
+       "userId": 1,
+       "id": 2,
+       "title": "quis ut nam facilis et officia qui",
+       "completed": false
+     }
+     ]
+     }
+     ```
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "No task found in the database." }`
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** 
+    ```javascript
+    { error : "The query is not valid" }
+    ```
     
 **Update ToDo task**
 ----
@@ -191,34 +213,44 @@
    
    **Example:**
 
-  `{
+  ```javascript
+  {
      "userId": [integer],
      "title": [string],
      "completed": [boolean]
-   }`
+   }
+   ```
 
 * **Success Response:**
 
   _Returns a JSON object with the task updated_
 
-  * **Code:** 200 - OK <br />
+  * **Code:** 201 - OK <br />
     **Content:**
- `{
-    "userId": 1,
-    "id": 4, 
-    "title": "et porro tempora",
-    "completed": true
-    }`
+    ```javascript
+    {
+       "userId": 1,
+       "id": 4, 
+       "title": "et porro tempora",
+       "completed": true
+     }
+     ```  
  
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "The JSON is not valid" }`
+    **Content:** 
+    ```javascript
+    { error : "The JSON is not valid" }
+    ```
     
   OR
     
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "No task exists with the supplied ID." }`
+    **Content:** 
+    ```javascript
+    { error : "No task exists with the supplied ID." }
+    ```
     
 **Delete a ToDo task**
 ----
@@ -246,9 +278,14 @@
 
   * **Code:** 204 - OK <br />
     **Content:**
-    _empty_
+    ```javascript
+    { success : "The resource was deleted sucessfully." }
+    ```
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "No task exists with the supplied ID." }`
+    **Content:** 
+    ```javascript
+    { error : "No task exists with the supplied ID." }
+    ```
