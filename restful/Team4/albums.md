@@ -1,0 +1,221 @@
+
+<h1 align="center">API ALBUMS</h1>
+<p align="center">Created by: Team4 Contact: dreamteam@alertLogic.com</p>
+
+----
+<br />
+
+  |    SERVICE   |    METHOD    |           URL          |  		   DESCRIPTION	                  |
+  |--------------|--------------|------------------------|-----------------------------------------------:|
+  |List albums   |GET           |_/rest/v1/albums_       |              			          |
+  |Create albums |POTS          |_/rest/v1/albums_     	 |              				  |
+  |Delete albums |PUT           |_/rest/v1/albums/:id_	 |                				  |
+  |Update albmums|DELETE        | _/rest/v1/albums/:id_  |                                                |
+
+
+<br />
+
+**LIST ALBUMS**
+----
+
+Returns json data about a set of ten albums by page
+
+  * **URL:**	
+
+    _/rest/v1/albums_
+  
+  * **METHOD:**
+
+    `GET`
+  
+* **URL PARAMS:**
+
+    * **Requiered:**
+    
+      offset = start in 0  default `[integer]`<br />
+      limit = 10 default `[integer]`
+
+
+    * **Optional:**
+    
+      * **Order:**
+      
+        name_order = "asc" `default` `[string, value: asc | des]`
+        
+      * **Filter:**
+        
+        userID_filter = 11 `[integer, operator: equal] `<br />
+        title_filter = "Vacations" `[string, operator: equal | like]`
+
+		
+
+* **DATA PARAMS:**
+
+  none
+
+* **SUCESS RESPONSE:**
+
+  * **Code:** 200 <br />
+  **Content:**<br />
+  ```
+  [
+	  totalCounts:100,
+		list_albums:{
+			{
+				"userId": 1,
+				"id": 1,
+				"title": "quidem molestiae enim"
+			},
+				
+			.
+			.
+			.
+			  	
+			{
+			  	"userId": n,
+				"id": n,
+				"title": "title n"
+			}	
+	  }
+  ]
+  ```
+
+* **ERROR RESPONSE:**
+
+  * **Code:** 401 BAD REQUEST <br />
+  **Content:**<br />
+  `{error:  the request was invalid or cannot be served, the parameters are invalid.}`
+
+  * **Sample Call:**
+  ```javascrip
+		$.ajax({
+		    url: "/albums",
+		    dataType: "json",
+		    type : "GET",
+		    success : function(r) {
+		     	console.log(r);
+		    }
+	  	});
+   ```
+
+**CREATE ALBUM**
+----
+This service create an album 
+
+* **URL**<br />
+	_/rest/v1/albums_
+ 
+* **METHOD:**
+  
+  `POST` 
+  
+*  **URL PARAMS:**
+
+	* **Required:**
+ 
+		None
+
+* **DATA PARAMS:**
+	
+	userID: `[integer]`
+	title: `[string, maximum 255]`,
+
+* **SUCESS RESPONSE:**
+  
+   * **Code:** 201 OK <br />
+    **Content:** <br />
+    ```
+    {
+    	"userId": n,
+		"id": n,
+		"title": "title n"
+	}
+	```
+ 
+* **ERROR RESPONSE:**
+
+  * **Code:** 400  BAD REQUEST- <br />
+    **Content:** <br />
+    `{error: "The JSON is not valid,the album {title} cant not be created "}`
+
+
+  * **Code:** 422 UNPROCESSABLE ENTRY <br />
+    **Content:** <br />
+    `{ error : "Mandatory fields are missing" }`
+
+
+**EDIT ALBUM**
+----
+  Returns json data about an album update.
+
+* **URL**<br />
+  _/rest/v1/albums/:id_
+
+* **METHOD:**
+
+  `PUT`
+  
+*  **URL PARAMS**
+	* **Required:**
+		id = `[integer]` 
+		title = `[string, maximum 255]`
+  	* **Optional:**
+
+* **DATA PARAMS:**
+{
+"userId": `[integer]`,
+"title": `[string, maximum 255]`,
+}
+     
+* **Success Response:**
+
+  * **Code:** 200 OK <br />
+    **Content:**  <br /> <br />
+    `{  "userId": 1,    "id": 1,    "title": "Title edited n"  }`
+ 
+* **Error Response:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:**  <br />
+    `{ error : "This album {title} doesn't exist" }`
+
+    
+   * **Code:** 422 UNPROCESSABLE ENTRY <br />
+    **Content:**  <br />
+    `{ error : "mandatory fields are missing" }`
+    
+    
+   * **NOTE:**
+   
+   	userId: `[integer, assigned, no editable]`
+    
+**DELETE ALBUM**
+----
+  Returns json data about a deleted photo.
+
+* **URL**
+
+  _/rest/v1/albums/:id_
+
+* **METHOD:**
+
+  `DELETE`
+  
+*  **URL PARAMS**
+
+	id = 1 `[integer]`
+
+* **DATA PARAMS**
+
+	None
+  
+* **SUCESS RESPONSE:**
+
+  * **Code:** 203 – OK –  <br />
+    **Content:** 
+    `{"message": "The album {title} with id: {id_album} was successfully deleted"}`
+ 
+* **ERROR RESPONSE:**
+
+  * **Code:** 404 NOT FOUND <br />
+    **Content:** `{ error : "{title} album doesn't exist" }` 
