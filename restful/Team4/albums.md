@@ -1,64 +1,90 @@
 
+<h1 align="center">API ALBUMS</h1>
+
+<br>
+
+
+  |    SERVICE   |    METHOD    |       URL      |  DESCRIPTION |
+  |--------------|--------------|:--------------:|-------------:|
+  |List albums   |GET           |_/albums_       |              |
+  |Create albums |              |                |              |
+  |Delete albums |              |                |              |
+  |Update albmums|              |                |              |
+
+
 **LIST ALBUMS**
 ----
 
 Returns json data about a set of ten albums by page
 
+  * **URL:**	
 
-	* **URL:**	
-		_/albums_
+    _/albums_
+  
+  * **METHOD:**
 
-	* **Method:**
-		`GET`
+    `GET`
+  
+* **URL PARAMS:**
 
-	* **URL Params:**
+    * **Requiered:**
+    
+      offset = start in 0  default `[integer]`<br />
+      limit = 10 default `[integer]`
 
-		**Requiered:**
-		offset = start in 0  default [integer]
-		limit = 10 default [integer]
 
-		**Optional:**
+    * **Optional:**
+    
+      * **Order:**
+      
+        name_order = "asc" `default` `[string, value: asc | des]`
+        
+      * **Filter:**
+        
+        userID_filter = 11 `[integer, operator: equal] `<br />
+        title_filter = "Vacations" `[string, operator: equal | like]`
 
-			**Order:**
-			name_order = "asc" default [string, value: asc | des]
 		
-			**Filter:**
-			userID_filter = 11 [integer, operator: equal ]
-			title_filter = "Vacations" [string, operator: equal | like]
 
-		
+* **DATA PARAMS:**
 
-	* **Data Params:**
-		none
+  none
 
-	* **Sucess Response:**
-		* **Code:**200
-		**Content:** [
-		  	totalCounts:100,
-		  	list_albums:{
-				 {
-				    "userId": 1,
-				    "id": 1,
-				    "title": "quidem molestiae enim"
-			  	},	
+* **SUCESS RESPONSE:**
+
+  * **Code:** 200 <br />
+  **Content:**<br />
+  ```
+  [
+	  totalCounts:100,
+		list_albums:{
+		  {
+			  "userId": 1,
+				"id": 1,
+				"title": "quidem molestiae enim"
+			},
+				
+			.
+			.
+			.
 			  	
-			  	.
-			  	.
-			  	.
-			  	
-			  	{
-				    "userId": n,
-				    "id": n,
-				    "title": "title n"
-			  	}	
-		 	 }
-		]
+			{
+			  "userId": n,
+				"id": n,
+				"title": "title n"
+			}	
+	  }
+  ]
+  ```
 
-	* **Error Response:**
-		* **Code:**401 BAD REQUEST 
-		**Content:**{error:  the request was invalid or cannot be served, the parameters are invalid.}
+* **ERROR RESPONSE:**
 
-	* **Sample Call:**
+  * **Code:** 401 BAD REQUEST <br />
+  **Content:**<br />
+  `{error:  the request was invalid or cannot be served, the parameters are invalid.}`
+
+  * **Sample Call:**
+  ```javascrip
 		$.ajax({
 		    url: "/albums",
 		    dataType: "json",
@@ -67,6 +93,5 @@ Returns json data about a set of ten albums by page
 		     	console.log(r);
 		    }
 	  	});
+   ```
 
-
-		
