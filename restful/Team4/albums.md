@@ -6,11 +6,11 @@
 <br />
 
   |    SERVICE   |    METHOD    |           URL          |  		   DESCRIPTION	                  |
-  |--------------|--------------|:----------------------:|-----------------------------------------------:|
+  |--------------|--------------|------------------------|-----------------------------------------------:|
   |List albums   |GET           |_/rest/v1/albums_       |              			          |
   |Create albums |POTS          |_/rest/v1/albums_     	 |              				  |
-  |Delete albums |              |                	 |                				  |
-  |Update albmums|              |                	 |                                                |
+  |Delete albums |PUT           |_/rest/v1/albums/:id_	 |                				  |
+  |Update albmums|DELETE        | _/rest/v1/albums/:id_  |                                                |
 
 
 <br />
@@ -171,7 +171,7 @@ This service create an album of pictures
 * **Success Response:**
 
   * **Code:** 200 OK <br />
-    **Content:** `{  "userId": 1,    "id": 1,    "title": "quidem molestiae enim-2"  }`
+    **Content:** `{  "userId": 1,    "id": 1,    "title": "Title edited n"  }`
  
 * **Error Response:**
 
@@ -204,10 +204,10 @@ This service create an album of pictures
   
 * **SUCESS RESPONSE:**
 
-  * **Code:** 203 – OK – The resource was successfully deleted <br />
+  * **Code:** 203 – OK – The album {title} with id: {id_album} was successfully deleted <br />
     **Content:** 
  
 * **ERROR RESPONSE:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "This album doesn't exist" }` 
+    **Content:** `{ error : "{title} album doesn't exist" }` 
