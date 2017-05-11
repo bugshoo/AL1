@@ -8,14 +8,12 @@
   |`POST`        |/api/v1/users     |              |
   |`PUT`         |/api/v1/users     |              |
   |`DELETE`      |/api/v1/users/:id |              |
-  |`GET`         |/api/v1/users     |              |
-  |`GET`         |/api/v1/users     |              |
-  |`GET`         |/api/v1/users     |              |
+  
 
 
 ## Data params' description
 
-###users
+### users
 
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
@@ -28,7 +26,7 @@
   |website       |[string]        |255           |false     |
   |company       |[company]       |              |true      |
   
-###address(subfield)   
+### address(subfield)   
 
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
@@ -39,7 +37,7 @@
   |geo           |[geo]           |              |false     |
   
   
-###geo(subfield) 
+### geo(subfield) 
 
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
@@ -47,7 +45,7 @@
   |lng           |[double signed] |              | false    |
   
   
-###company(subfield)
+### company(subfield)
 
   | Field name   |      Type      |  Description | Required |
   |:------------:|:--------------:|:------------:|:--------:|
@@ -70,14 +68,38 @@
   
 * **URL Params**
 
-    | Field name   |      Value     |  use                      | Required |
-    |:------------:|:--------------:|:-------------------------:|:--------:|
-    |id            | asc | desc     |/api/v1/users?id={value}   |false     |
-    |name          | asc | desc     |/api/v1/users?name={value} |
-    |city          |[string]        |55            |false       |
-    |zipcode       |[string]        |32            |false       |
-    |geo           |[geo]           |              |false       |
   
+  - Paginations
+  
+   /api/v1/users?count=[integer]&page[integer]
+
+    | Endpoint                   |  Description                              |
+    |:--------------------------:|:-----------------------------------------:|
+    |/api/v1/users?count=5&page=2| Return the second ones 5 users' records   |
+    |/api/v1/users?count=7&page=5| Return the fifth ones 7 users' records    |
+    
+  - Ordering
+  
+  /api/v1/users?sort={ | -} {name | id}
+
+    | Endpoint                   |  Description                              |
+    |:--------------------------:|:-----------------------------------------:|
+    |/api/v1/users?sort=-name    | Return the descendent users's list by name|
+    |/api/v1/users?sort=name     | Return the ascendent users's list by name |
+    |/api/v1/users?sort=id       | Return the ascendent users's list by id   |
+    |/api/v1/users?sort=-id      | Return the ascendent users's list by id   |
+    
+
+  - Filtering
+  
+  /api/v1/users?filter={name | username | email | website | company}&value=[string]
+   
+    | Endpoint                                         |  Description                                                     |
+    |:------------------------------------------------:|:----------------------------------------------------------------:|
+    |/api/v1/users?filter=username&value=jeffer,like   | Return  users' records with username like %jeffer%               |
+    |/api/v1/users?filter=email&value=jeffer,eq        | Return  user record with email jhon.pantoja@correounivalle.edu.co   |
+
+
 * **Data Params**
 
   None
