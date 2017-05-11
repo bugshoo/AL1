@@ -25,14 +25,16 @@
    `thumbnailUrl=[string 255]`
    
    **Example:**
+  ```javascript 
+    {
+       "albumId"=[integer],
+       "id"=[integer 255],
+       "title"=[string 255],
+       "url"=[string 255],
+       "thumbnailUrl"=[string 255]
+    }
+  ```
 
-  `{
-     "albumId"=[integer],
-     "id"=[integer 255],
-     "title"=[string 255],
-     "url"=[string 255],
-     "thumbnailUrl"=[string 255]
-  }`
 
 * **Success Response:**
 
@@ -40,24 +42,26 @@
 
   * **Code:** 201 OK<br />
     **Content:** 
-    `{
+    ```javascript
+    {
         "albumId": 1,
         "id": 1,
         "title": "accusamus beatae ad facilis cum similique qui sunt",
         "url": "http://placehold.it/600/92c952",
         "thumbnailUrl": "http://placehold.it/150/92c952",
         "status": true
-        }`
+        }
+    ```
  
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "The JSON is not valid" }`
+    **Content:** ```javascript { error : "The JSON is not valid" }```
 
   OR
 
   * **Code:** 422 UNPROCESSABLE ENTRY <br />
-    **Content:** `{ error : "mandatory fields are missing" }`
+    **Content:** ```javascript{ error : "mandatory fields are missing", fields:[field1,field2,field3] }```
 
 **Get a photo**
 ----
@@ -87,19 +91,21 @@
 
   * **Code:** 200 - OK <br />
     **Content:**
- `{
+ ```javascript
+ {
     "albumId": 1,
     "id": 1,
     "title": "accusamus beatae ad facilis cum similique qui sunt",
     "url": "http://placehold.it/600/92c952",
     "thumbnailUrl": "http://placehold.it/150/92c952",
     "status": true
-    }`
+    }
+  ```
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "The photo not exists with the supplied id." }`
+    **Content:** ```javascript{ error : "The photo not exists with the supplied id." }```
     
 **Get photos**
 ----
@@ -157,27 +163,32 @@
 
   * **Code:** 200 - OK <br />
     **Content:**
- `[
-  {
-    "albumId": 1,
-    "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": "http://placehold.it/600/92c952",
-    "thumbnailUrl": "http://placehold.it/150/92c952"
-  },
-  {
-    "albumId": 1,
-    "id": 2,
-    "title": "reprehenderit est deserunt velit ipsam",
-    "url": "http://placehold.it/600/771796",
-    "thumbnailUrl": "http://placehold.it/150/771796"
+ ```javascript
+ { "count"=[integer], 
+   "value"=
+           [
+            {
+              "albumId": 1,
+              "id": 1,
+              "title": "accusamus beatae ad facilis cum similique qui sunt",
+              "url": "http://placehold.it/600/92c952",
+              "thumbnailUrl": "http://placehold.it/150/92c952"
+            },
+            {
+              "albumId": 1,
+              "id": 2,
+              "title": "reprehenderit est deserunt velit ipsam",
+              "url": "http://placehold.it/600/771796",
+              "thumbnailUrl": "http://placehold.it/150/771796"
+            }
+            ]
   }
-  ]`
+  ```
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "Photos not found in the database." }`
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** ```javascript{ error : "Query is not valid" }```
     
 **Update photo**
 ----
@@ -209,37 +220,41 @@
    
    **Example:**
 
-  `{
+  ```javascript
+  {
      "albumId"=[integer],
      "id"=[integer 255],
      "title"=[string 255],
      "url"=[string 255],
      "thumbnailUrl"=[string 255]
-  }`
+  }
+  ```
 
 * **Success Response:**
 
   _Returns a JSON object with the photo updated_
 
-  * **Code:** 200 - OK <br />
+  * **Code:** 201 - OK <br />
     **Content:**
- `{
+ ```javascript
+ {
     "albumId": 1,
     "id": 1,
     "title": "accusamus beatae ad facilis cum similique qui sunt",
     "url": "http://placehold.it/600/92c952",
     "thumbnailUrl": "http://placehold.it/150/92c952"
-  }`
+  }
+  ```
  
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
-    **Content:** `{ error : "The JSON is not valid" }`
+    **Content:** ```javascript{ error : "The JSON is not valid" }```
     
   OR
     
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "Photo not exists with the supplied id." }`
+    **Content:** ```javascript{ error : "Photo not exists with the supplied id." }```
     
 **Delete a photo**
 ----
@@ -266,10 +281,9 @@
 * **Success Response:**
 
   * **Code:** 204 - OK <br />
-    **Content:**
-    _empty_
+    **Content:** ```{ error : "Photo deleted successfully" }```
  
 * **Error Response:**
 
   * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "Photo not exists the supplied id." }`
+    **Content:** ```{ error : "Photo not exists the supplied id." }```
